@@ -1,0 +1,132 @@
+body,
+div,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+input,
+textarea,
+form,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #4a86b4;
+}
+body {
+  background-color: #f9f9f9;
+  background-image: url("i/pattern.png");
+}
+img {
+  border: none;
+}
+.clear:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+#hd {
+  height: 60px;
+  background: #fff;
+  border-bottom: 1px solid #bbb;
+  box-shadow: 0 2px 0 0 #ccc;
+}
+#hd .hdmain {
+  width: 960px;
+  margin: 0 auto;
+}
+#hd .logo {
+  float: left;
+}
+#hd .nav-sub {
+  float: right;
+}
+#hd .nav-sub li {
+  float: left;
+  margin-right: 10px;
+}
+#hd .nav-sub li a {
+  line-height: 60px;
+}
+#bd {
+  width: 960px;
+  margin: 20px auto;
+}
+#bd .main {
+  float: left;
+  width: 760px;
+  margin-right: 20px;
+}
+#bd .aside {
+  float: left;
+  width: 180px;
+}
+
+#bd .aside .aside-box {
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+#ft {
+  border-top: 2px solid #e9e9e9;
+  background-color: #f3f3f3;
+  padding: 20px;
+  color: #ccc;
+}
+#ft a {
+  margin: 0 10px;
+}
+#ft .ftmain {
+  width: 960px;
+  margin: 0 auto;
+}
+
+
+/* Widgets */
+
+/* date picker */
+.fdz-widget-calendar{
+	background: #fff;
+	border:1px solid #ccc;
+}
+
+.fdz-widget-calendar-title{
+	position:relative;
+}
+
+.fdz-widget-calendar-titlecurrent{
+	text-align: center;
+}
+
+.fdz-widget-calendar-lastmonth{
+	position:absolute;
+	left: 5px;
+	top: 1px;
+	cursor: pointer;
+}
+
+.fdz-widget-calendar-nextmonth{
+	position: absolute;
+	right: 5px;
+	top: 1px;
+	cursor: pointer;
+}
+
+.fdz-widget-calendar-body td{cursor:pointer}
+
+
+/* autocompleter */
+.ac_select{border:1px solid #ddd;background: #fff;z-index: 50;}
+.ac_select{border:1px solid #ddd;padding:3px;}
+.ac_select .ac{background-color: #cae7f6;}
