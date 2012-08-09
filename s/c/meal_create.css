@@ -1,0 +1,14 @@
+#bd {
+  width: 960px;
+  background: #fff;
+}
+#bd form {
+  padding: 50px;
+}
+#bd form .row {
+  margin-bottom: 20px;
+  line-height: 35px;
+}
+#bd form .row input {
+  line-height: 24px;
+}

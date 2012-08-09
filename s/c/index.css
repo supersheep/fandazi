@@ -1,0 +1,105 @@
+#bd .main {
+  width: 720px;
+  background: #fff;
+}
+#bd .main .filter {
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  padding: 20px;
+}
+#bd .main .filter .filter-row {
+  margin-bottom: 15px;
+}
+#bd .main .filter .title {
+  float: left;
+  font-weight: 700;
+}
+#bd .main .filter .tags {
+  margin-left: 50px;
+}
+#bd .main .filter .tags .tag {
+  margin-right: 5px;
+  display: inline-block;
+  color: #4a86b4;
+  cursor: pointer;
+}
+#bd .main .filter .tags .tag:hover {
+  text-decoration: underline;
+}
+#bd .main .datings {
+  padding: 20px 0;
+  background: #f5f5f5;
+}
+#bd .main .datings .dating {
+  float: left;
+  margin: 0 20px 30px 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 320px;
+  overflow: hidden;
+  height: 120px;
+  border-bottom: 1px solid #ccc;
+}
+#bd .main .datings .dating .pic {
+  float: left;
+  width: 120px;
+  height: 200px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,0,0,0.35);
+}
+#bd .main .datings .dating .pic img {
+  width: 250px;
+  display: block;
+}
+#bd .main .datings .dating .info {
+  width: 180px;
+  margin: 0 10px 0 130px;
+  height: 80px;
+  position: relative;
+  padding: 5px 0;
+}
+#bd .main .datings .dating .info .title {
+  font-size: 13px;
+}
+#bd .main .datings .dating .info .info-row {
+  font-size: 12px;
+}
+#bd .main .datings .dating .participants {
+  margin: 0 10px 0 130px;
+  height: 24px;
+}
+#bd .participants .user {
+  float: left;
+  margin-right: 4px;
+}
+#bd .participants .user .avatar {
+  float: left;
+  width: 24px;
+  height: 24px;
+}
+#bd .main .more {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-top: 1px dashed #ccc;
+}
+#bd .main .more .load {
+  color: #fff;
+  border-radius: 5px;
+  width: 100px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px;
+  background-color: #39d;
+}
+#bd .aside,
+#bd .aside {
+  width: 220px;
+}
+#bd .aside .head {
+  background-color: #a0c0dc;
+  border-top: 3px solid;
+}
+#689FBF {
+  padding: 10px;
+  color: #fff;
+}

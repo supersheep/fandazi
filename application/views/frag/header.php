@@ -1,10 +1,14 @@
 <html><head>
 <title>饭搭子</title>
 <meta charset="UTF-8">
+
 <script type="text/javascript" src="/s/j/sea.js"></script>
 <script type="text/javascript" src="/s/j/jquery.js"></script>
-<link href="/s/c/base.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="/s/c/meal.css">
+
+<link rel="stylesheet" href="/s/c/base.css">
+<?php foreach($css as $c):?>
+<link rel="stylesheet" href="/s/c/<?=$c;?>.css">
+<?php endforeach;?>
 </head>
 <body>
 <div id="hd">

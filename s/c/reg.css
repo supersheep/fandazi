@@ -1,0 +1,88 @@
+fieldset {
+  border: none;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+legend {
+  font-size: 14px;
+  padding-bottom: 14px;
+  position: static;
+}
+.welcome {
+  font-size: 24px;
+  color: #555;
+  margin-bottom: 20px;
+}
+#bd {
+  margin: 40px auto 100px auto;
+  position: relative;
+}
+#form {
+  width: 430px;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 60px 30px;
+  position: relative;
+  z-index: 5;
+  height: 415px;
+}
+#form .row {
+  margin-bottom: 10px;
+}
+#form .row .hint {
+  margin-left: 5px;
+  display: none;
+}
+#form .row .err {
+  color: #f30;
+  display: inline;
+}
+#form .row label {
+  float: left;
+  line-height: 26px;
+  width: 80px;
+}
+#form .row input {
+  border-radius: 3px;
+  box-shadow: inset 2px 2px 2px rgba(0,0,0,0.1);
+  border: 1px solid #ccc;
+  line-height: 16px;
+  outline: none;
+  padding: 4px 6px;
+  width: 175px;
+}
+#form .btn {
+  background-color: #39d;
+  border-radius: 3px;
+  color: #fff;
+  border: none;
+  padding: 4px;
+  width: 50px;
+  margin-right: 152px;
+  cursor: pointer;
+  float: right;
+}
+#form .btn:hover {
+  background: #4ae;
+}
+.slide {
+  overflow: hidden;
+  width: 480px;
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 480px;
+}
+.slide ul {
+  width: 2380px;
+}
+.slide .spic {
+  width: 480px;
+  height: 534px;
+  overflow: hidden;
+  float: left;
+}
+.slide .spic img {
+  min-width: 480px;
+  min-height: 460px;
+}

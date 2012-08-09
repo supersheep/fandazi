@@ -5,10 +5,12 @@
 </div>
 
 <script type="text/javascript">
-	$(window).data({
-		cityid:	<?=$cityid?>
-	});
+<?php if(isset($jsdata)):?>
+$(window).data(<?=json_encode($jsdata);?>);
+<?php endif;?>
 </script>
-
+<?php foreach($js as $j):?>
+<script type="text/javascript" src="/s/j/<?=$j;?>.js"></script>
+<?php endforeach;?>
 
 </body></html>
