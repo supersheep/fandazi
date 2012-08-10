@@ -26,6 +26,13 @@
 #bd .main .filter .tags .tag:hover {
   text-decoration: underline;
 }
+
+#bd .main .datings:after{
+  clear:both;
+  display:block;
+  content:"";
+}
+
 #bd .main .datings {
   padding: 20px 0;
   background: #f5f5f5;
@@ -54,19 +61,17 @@
 #bd .main .datings .dating .info {
   width: 180px;
   margin: 0 10px 0 130px;
-  height: 80px;
   position: relative;
   padding: 5px 0;
 }
 #bd .main .datings .dating .info .title {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 700;
 }
 #bd .main .datings .dating .info .info-row {
   font-size: 12px;
 }
 #bd .main .datings .dating .participants {
-  margin: 0 10px 0 130px;
-  height: 24px;
 }
 #bd .participants .user {
   float: left;
@@ -74,8 +79,8 @@
 }
 #bd .participants .user .avatar {
   float: left;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 }
 #bd .main .more {
   background-color: #f5f5f5;
@@ -91,15 +96,19 @@
   padding: 10px;
   background-color: #39d;
 }
-#bd .aside,
+
 #bd .aside {
   width: 220px;
 }
+
+
+#bd .aside .box{
+  margin-bottom: 15px;
+}
+
 #bd .aside .head {
   background-color: #a0c0dc;
-  border-top: 3px solid;
-}
-#689FBF {
+  border-top: 3px solid #689FBF;
   padding: 10px;
   color: #fff;
 }

@@ -13,5 +13,9 @@ class FDZ_Model extends CI_Model{
 		return $query->row();
 	}
 
+	public function get_all(){
+		$query = $this->db->select()->get($this->tablename);
+		return $query->result();
+	}
 }
 
