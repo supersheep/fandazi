@@ -5,8 +5,13 @@ class FDZ_Controller extends CI_Controller{
 	public function __construct(){
 
 		parent::__construct();
-
-
+		$this->load->model("usermodel");
+		$logged = $this->usermodel->logged();
+		if($logged){
+			$this->current_user = $this->usermodel->current();
+		}else{
+			$this->current_user = null;
+		}
 	}
 
 	public function header(){
@@ -19,6 +24,9 @@ class FDZ_Controller extends CI_Controller{
 		if(!isset($this->data["css"])){
 			$this->data["css"] = array();
 		}
+		
+		$this->data["current_user"] = $this->current_user;
+
 		$this->load->view("frag/header",$this->data);
 		$this->load->view("pages/".$this->view,$this->data);
 		$this->load->view("frag/footer",$this->data);

@@ -42,6 +42,7 @@ $route['default_controller'] = "main";
 $route['404_override'] = '';
 
 $route['meal/(:num)'] = "meal/show/$1";
+$route['user/(:num)'] = "user/show/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

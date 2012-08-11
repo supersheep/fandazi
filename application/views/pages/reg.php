@@ -33,7 +33,7 @@
 				<?php endforeach;?>
 			</select>
 		</div>
-		<div class="">
+		<div>
 			<input type="submit" value="注册" class="btn">
 		</div>
 		</fieldset>

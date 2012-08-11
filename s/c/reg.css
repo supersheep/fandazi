@@ -14,14 +14,14 @@ legend {
   margin-bottom: 20px;
 }
 #bd {
-  margin: 40px auto 100px auto;
+  margin: 40px auto;
   position: relative;
 }
 #form {
   width: 430px;
   background-color: #fff;
   border-radius: 5px;
-  padding: 60px 30px;
+  padding: 40px 30px;
   position: relative;
   z-index: 5;
   height: 415px;
@@ -40,7 +40,7 @@ legend {
 #form .row label {
   float: left;
   line-height: 26px;
-  width: 80px;
+  width: 90px;
 }
 #form .row input {
   border-radius: 3px;
@@ -78,7 +78,7 @@ legend {
 }
 .slide .spic {
   width: 480px;
-  height: 534px;
+  height: 494px;
   overflow: hidden;
   float: left;
 }
