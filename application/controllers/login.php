@@ -13,8 +13,7 @@ class Login extends FDZ_Controller{
 		
 		
 		
-		$this->data["errcode"] = 0;
-
+		$this->data["errcode"] = 0;;
 		if($email && $password){
 			
 			// 若登录成功
@@ -23,7 +22,7 @@ class Login extends FDZ_Controller{
 			if($login_code == 1){
 				redirect('/');
 			}else{
-				$this->data["errcode"] = $login;
+				$this->data["errcode"] = $login_code;
 			}
 		}
 

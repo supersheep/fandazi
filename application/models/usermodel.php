@@ -45,12 +45,14 @@ class Usermodel extends FDZ_Model{
 		$user = $this->get_by_email($email);
 		
 		
-		if(is_null($user)){
+		if(!count($user)){
 			// 用户不存在
 			return -1;
 		}
 		
-		if($user->password != $password){
+		var_dump($user);
+
+		if($user->password !== $password){
 			// 密码错误
 			return -2;
 		}
