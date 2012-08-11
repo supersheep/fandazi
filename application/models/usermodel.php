@@ -82,6 +82,17 @@ class Usermodel extends FDZ_Model{
 		return 1;
 	}
 
+
+	function logout(){
+		$this->load->helper('cookie');
+		$session = $this->input->cookie('cidiu');
+		delete_cookie($this->cookie_name);
+		delete_cookie($this->cookie_email);
+
+
+		return $this->sessionmodel->delete_by_session($session);
+	}
+
 	function logged(){
 		$this->load->helper('cookie');
 		$this->load->library('user_agent');
