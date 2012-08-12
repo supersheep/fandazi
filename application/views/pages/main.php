@@ -54,6 +54,7 @@
 	</div>	
 
 	<div class="aside">
+		<div class="box"><a href="/meal/create" class="btn">发起聚餐</a></div>
 		<div class="box">
 		<div class="head">今日聚餐</div>
 		<div class="body"></div>

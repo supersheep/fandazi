@@ -101,6 +101,10 @@
   width: 220px;
 }
 
+#bd .aside .btn{
+  display: block;
+  padding: 10px;
+}
 
 #bd .aside .box{
   margin-bottom: 15px;

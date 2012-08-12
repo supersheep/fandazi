@@ -7,6 +7,16 @@ class Meal extends FDZ_Controller {
 		// echo 'Hello World!'; 
 	}
 
+	public function create(){
+		$this->load->model("categorymodel");	
+		$this->view = "meal_create";
+		$this->data = array(
+			"category" => $this->categorymodel->get_all(),
+			"css" => array("meal_create")
+		);
+		parent::header();
+	}
+
 	public function show($id){
 
 		$this->load->model("mealmodel");
