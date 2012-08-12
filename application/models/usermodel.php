@@ -49,8 +49,6 @@ class Usermodel extends FDZ_Model{
 			// 用户不存在
 			return -1;
 		}
-		
-		var_dump($user);
 
 		if($user->password !== $password){
 			// 密码错误

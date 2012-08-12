@@ -8,13 +8,22 @@ class Meal extends FDZ_Controller {
 	}
 
 	public function create(){
-		$this->load->model("categorymodel");	
-		$this->view = "meal_create";
-		$this->data = array(
-			"category" => $this->categorymodel->get_all(),
-			"css" => array("meal_create")
-		);
-		parent::header();
+
+		$this->load->library('form_validation');
+
+		if($this->form_validation->run() == FALSE){
+			$this->form_validation->set_error_delimiters('<span class="err">', '</span>');
+
+			$this->load->model("categorymodel");	
+			$this->view = "meal_create";
+			$this->data = array(
+				"category" => $this->categorymodel->get_all(),
+				"css" => array("meal_create")
+			);
+			parent::header();
+		}else{
+			echo "success";
+		}
 	}
 
 	public function show($id){

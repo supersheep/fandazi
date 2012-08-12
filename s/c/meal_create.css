@@ -1,6 +1,7 @@
 #bd {
   width: 960px;
   background: #fff;
+  border-radius: 5px;
 }
 #bd form {
   padding: 50px;
@@ -13,6 +14,14 @@
   margin-bottom: 20px;
   margin-left:110px;
   display:block;
+}
+
+#bd form .err {
+	color:#F30;
+	margin-left:5px;
+	margin-top:3px;
+	vertical-align:top;
+	display: inline-block;
 }
 
 #bd form .item input,#bd form .item textarea{
