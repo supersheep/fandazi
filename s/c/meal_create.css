@@ -26,17 +26,33 @@
 
 #bd form .item input,#bd form .item textarea{
 	width: 350px;
-  border-radius: 3px;
+  	border-radius: 3px;
 	box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
 	border: 1px solid #CCC;
-	line-height: 16px;
 	outline: none;
 	padding: 4px 6px;
-  line-height: 24px;
+  	line-height: 24px;
 }
 
 #bd form .btn{
 	float:left;
 	padding:4px 10px;
 	margin-left:410px;
+}
+
+#bd #date{
+	width:240px;
+}
+
+#time{
+	margin-left:15px;
+	width: 90px;
+	line-height: 30px;
+	height: 30px;
+	border-radius: 3px;
+	box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
+	border: 1px solid #CCC;
+	outline: none;
+	padding: 4px 6px;
+	line-height: 24px;
 }

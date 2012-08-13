@@ -11,7 +11,7 @@ class Meal extends FDZ_Controller {
 		$this->load->model(array('shopmodel','mealmodel'));
 		$this->load->library('form_validation');
 
-
+		// 表单验证不通过
 		if($this->form_validation->run() == FALSE){
 			$this->form_validation->set_error_delimiters('<span class="err">', '</span>');
 
@@ -23,32 +23,38 @@ class Meal extends FDZ_Controller {
 			);
 			parent::header();
 		}else{
-			$row = $this->shopmodel->get_by_dpurl($this->input->post("dpurl"));
-			if(!count($row)){
-				$row = $this->shopmodel->scratch();
+		// 表单验证通过
+			$url = $this->input->post("dpurl");
+			$shop = $this->shopmodel->get_by_dpurl($url);
+			if(!count($shop)){
+				$shop = $this->shopmodel->scratch($url);
+				//var_dump($shop);
 			}
 
-			//var_dump($row);
-			
-
-			
-
+			var_dump($shop);
 			// 避免重复创建,hash
+			$start = $this->input->post("date").' '.$this->input->post("time");
+			$hash = md5($shop->id.$start);
+			$meal = $this->mealmodel->get_by_hash($hash);
 
-			$this->mealmodel->insert(array(
-				"shop_id" => $row->id,
-				"title" => $this->input->post("title"),
-				"host" => $this->current_user->id,
-				"start" => $this->input->post("date").' '.$this->input->post("time"),
-				"createtime" => date('Y-m-d h:i:s'),
-				"describe" => $this->input->post("describe"),
-				"status" => 0
-			));
+			if(count($meal)){
+				$id = $meal->id;
+			}else{
+				$this->mealmodel->insert(array(
+					"shop_id" => $shop->id,
+					"title" => $this->input->post("title"),
+					"host" => $this->current_user->id,
+					"start" => $start,
+					"createtime" => date('Y-m-d h:i:s'),
+					"describe" => $this->input->post("describe"),
+					"status" => 0,
+					"hash" => $hash
+				));
+				$id = $this->db->insert_id();
+			}
 
-			// 添加当前用户到participants
-			//$this->participantmodel->insert();
-
-			echo "success";
+			echo $id;
+			
 		}
 	}
 

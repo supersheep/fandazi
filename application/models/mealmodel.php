@@ -8,6 +8,11 @@ class Mealmodel extends FDZ_Model{
 		$this->db->insert($this->tablename,$data);
 	}
 
+	function get_by_hash($hash){
+		$query = $this->db->select()->where(array("hash"=>$hash))->get($this->tablename);
+		return $query->row();
+	}
+
 	function get_full_info($meal){
 		$this->load->model(array("shopmodel","usermodel","participantmodel","mealmodel"));
 		if(!is_null($meal)){
