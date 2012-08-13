@@ -33,8 +33,8 @@ class Meal extends FDZ_Controller {
 
 			
 
-			// 拒绝重复创建,hash
-			
+			// 避免重复创建,hash
+
 			$this->mealmodel->insert(array(
 				"shop_id" => $row->id,
 				"title" => $this->input->post("title"),
@@ -44,7 +44,10 @@ class Meal extends FDZ_Controller {
 				"describe" => $this->input->post("describe"),
 				"status" => 0
 			));
- 
+
+			// 添加当前用户到participants
+			//$this->participantmodel->insert();
+
 			echo "success";
 		}
 	}
