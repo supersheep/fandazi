@@ -7,7 +7,7 @@ $config = array(
         	'rules' => 'required'
         ),
 	    array(
-        	'field' => 'time',
+        	'field' => 'date',
         	'label' => '活动时间',
         	'rules' => 'required'
 	    ),

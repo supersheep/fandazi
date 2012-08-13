@@ -8,8 +8,9 @@ class Meal extends FDZ_Controller {
 	}
 
 	public function create(){
-
+		$this->load->model(array('shopmodel','mealmodel'));
 		$this->load->library('form_validation');
+
 
 		if($this->form_validation->run() == FALSE){
 			$this->form_validation->set_error_delimiters('<span class="err">', '</span>');
@@ -22,6 +23,28 @@ class Meal extends FDZ_Controller {
 			);
 			parent::header();
 		}else{
+			$row = $this->shopmodel->get_by_dpurl($this->input->post("dpurl"));
+			if(!count($row)){
+				$row = $this->shopmodel->scratch();
+			}
+
+			//var_dump($row);
+			
+
+			
+
+			// 拒绝重复创建,hash
+			
+			$this->mealmodel->insert(array(
+				"shop_id" => $row->id,
+				"title" => $this->input->post("title"),
+				"host" => $this->current_user->id,
+				"start" => $this->input->post("date").' '.$this->input->post("time"),
+				"createtime" => date('Y-m-d h:i:s'),
+				"describe" => $this->input->post("describe"),
+				"status" => 0
+			));
+ 
 			echo "success";
 		}
 	}

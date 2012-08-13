@@ -4,6 +4,10 @@ class Mealmodel extends FDZ_Model{
 
 	var $tablename = "fdz_meal";
 
+	function insert($data){
+		$this->db->insert($this->tablename,$data);
+	}
+
 	function get_full_info($meal){
 		$this->load->model(array("shopmodel","usermodel","participantmodel","mealmodel"));
 		if(!is_null($meal)){

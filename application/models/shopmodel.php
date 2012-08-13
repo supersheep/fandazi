@@ -10,10 +10,18 @@ class Shopmodel extends FDZ_Model {
         $this->load->model(array("citymodel","districtmodel"));
     }
 
+    function get_by_dpurl($url){
+        preg_match('/^http:\/\/www\.dianping\.com\/shop\/(\w+)$/', $url,$matches);
+        $id = $matches[1];
+        $query = $this->db->select()->where(array("dpid"=>$id))->get($this->tablename);
+        return $query->row();
+    }
+
     function get_by_id($id){
         $query = $this->db->select()->where(array("id"=>$id))->get($this->tablename);
+
         $shop = $query->row();
-        if(!is_null($shop)){
+        if(count($shop)){
             $city = $this->citymodel->get_by_id($shop->city);
             $district = $this->districtmodel->get_by_id($shop->district);
             $shop->cityname = $city->name;
