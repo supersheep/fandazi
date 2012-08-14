@@ -10,6 +10,7 @@ class Meal extends FDZ_Controller {
 	public function create(){
 		$this->load->model(array('shopmodel','mealmodel'));
 		$this->load->library('form_validation');
+		$this->load->helper("url");
 
 		// 表单验证不通过
 		if($this->form_validation->run() == FALSE){
@@ -31,7 +32,6 @@ class Meal extends FDZ_Controller {
 				//var_dump($shop);
 			}
 
-			var_dump($shop);
 			// 避免重复创建,hash
 			$start = $this->input->post("date").' '.$this->input->post("time");
 			$hash = md5($shop->id.$start);
@@ -53,7 +53,7 @@ class Meal extends FDZ_Controller {
 				$id = $this->db->insert_id();
 			}
 
-			echo $id;
+			redirect("/meal/".$id);
 			
 		}
 	}

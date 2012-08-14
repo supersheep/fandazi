@@ -11,7 +11,7 @@ class Shopmodel extends FDZ_Model {
     }
 
     function get_by_dpurl($url){
-        preg_match('/^http:\/\/www\.dianping\.com\/shop\/(\w+)$/', $url,$matches);
+        preg_match('/^http:\/\/www\.dianping\.com\/shop\/(\w+)/', $url,$matches);
         $id = $matches[1];
         $query = $this->db->select()->where(array("dpid"=>$id))->get($this->tablename);
         return $query->row();
@@ -32,7 +32,7 @@ class Shopmodel extends FDZ_Model {
     }
 
     function scratch($url){
-        $this->load->model(array("citymodel","districtmodel"));
+        $this->load->model(array("citymodel","districtmodel","tastemodel"));
         $this->load->library("simple_html_dom");
 
         $opts = array(
@@ -52,33 +52,49 @@ class Shopmodel extends FDZ_Model {
         $dpid = $matches[1];
 
         $cityname = $html->find("#G_loc .txt",0)->plaintext;
+        $cityname = explode("站",$cityname);
+        $cityname = $cityname[0];
         $districtname = $html->find(".region",0)->plaintext;
         $location = $html->find(".shop-info-content span",1)->plaintext;
         $name = $html->find(".shop-title",0)->plaintext;
         $bizarea = $html->find(".breadcrumb a span",2)->plaintext;
-        $taste = $html->find(".breadcrumb a span",3)->plaintext;
-        $type = null;
-        $average = null;
-
-        $cityname = explode("站",$cityname);
-        $cityname = $cityname[0];
+        $tastename = $html->find(".breadcrumb a span",3)->plaintext;
+        $type = $html->find(".bread-name",0)->plaintext;
+        $type = explode($cityname,$type);
+        $type = $type[1];
+        $average = $html->find(".comment-rst dd",0)->plaintext;
+        $average = explode("¥",$average);
+        $average = $average[1];
         
         $city = $this->citymodel->get_by_name($cityname);
         $district = $this->districtmodel->get_by_name($districtname);
+        $taste = $this->tastemodel->get_by_name($tastename);
+
+        if(is_null($taste)){
+            $this->tastemodel->insert(array(
+                "name"=>$name));
+            $taste = new stdClass();
+            $taste->id = $this->db->insert_id();
+        }
+
 
         // bizarea to db
         $arr = array(
             "name" => $name,
             "dpid" => $dpid,
             "type" => $type,
-            "city" => $city->id,
+            "city" => isset($city->id)?$city->id:null,
             "location" => $location,
-            "district" => $district->id,
+            "district" => isset($district->id)?$district->id:null,
             "bizarea" => $bizarea,
-            "taste" => $taste,
+            "taste" => $taste->id,
             "average" => $average
         );
-        return (object) $arr;
+
+        $this->db->insert($this->tablename,$arr);
+        $ret = (object) $arr;
+        $ret->id = $this->db->insert_id();
+        return $ret;
     }
 
     // function get_last_ten_entries()

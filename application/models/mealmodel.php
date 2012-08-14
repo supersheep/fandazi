@@ -16,7 +16,7 @@ class Mealmodel extends FDZ_Model{
 	function get_full_info($meal){
 		$this->load->model(array("shopmodel","usermodel","participantmodel","mealmodel"));
 		if(!is_null($meal)){
-			$shop = $this->shopmodel->get_by_id($meal->id);
+			$shop = $this->shopmodel->get_by_id($meal->shop_id);
 
 			$meal->shop = $shop;
 
