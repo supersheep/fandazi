@@ -13,6 +13,12 @@ class Mealmodel extends FDZ_Model{
 		return $query->row();
 	}
 
+	function get_last($limit=10,$offset=0){
+
+		$query = $this->db->select()->where(array("status"=>1))->get($this->tablename,$limit,$offset);
+		return $query->result();
+	}
+
 	function get_full_info($meal){
 		$this->load->model(array("shopmodel","usermodel","participantmodel","mealmodel"));
 		if(!is_null($meal)){

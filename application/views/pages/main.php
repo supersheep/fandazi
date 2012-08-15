@@ -22,27 +22,23 @@
 		</div>
 
 		<div class="datings">
-			
-			<?php for($i=0;$i<5;$i++):?>
+			<?php foreach($meals as $meal):?>
 			<div class="dating">
-				
 				<div class="pic">
-					<img src="" alt="">
+					<img src="<?=$meal->pic_small;?>" alt="">
 				</div>
 				<div class="info">
-					<div class="title">吃吃小菜聊聊天--互联网同行交流</div>
-					<div class="info-row">餐馆：兰心餐厅[晚餐]</div>
-					<div class="info-row">聚会将于3天后举行</div>
+					<div class="title"><?=$meal->title;?></div>
+					<div class="info-row">餐馆：<?=$meal->shop->name;?></div>
+					<div class="info-row">聚会将于<?=$meal->start;?>举行</div>
 					<div class="participants clear">
-						<div class="user"> <img src="/s/i/default_avatar.png" alt="" class="avatar"> </div>
-						<div class="user"> <img src="/s/i/default_avatar.png" alt="" class="avatar"> </div>
-						<div class="user"> <img src="/s/i/default_avatar.png" alt="" class="avatar"> </div>
-						<div class="user"> <img src="/s/i/default_avatar.png" alt="" class="avatar"> </div>
+						<?php foreach($meal->participants as $user): ?>
+							<div class="user"> <img src="<?=$user->avatar;?>" alt="<?=$user->name;?>" class="avatar"> </div>
+						<?php endforeach;?>
 					</div>
 				</div>
 			</div>
-			<?php endfor;?>
-
+			<?php endforeach;?>
 		</div>
 
 		<div class="more">
