@@ -4,12 +4,6 @@ class Shopmodel extends FDZ_Model {
     
 	var $tablename = "fdz_shop";
 
-    function __construct(){
-
-        parent::__construct();
-        $this->load->model(array("citymodel","districtmodel"));
-    }
-
     function get_by_dpurl($url){
         preg_match('/^http:\/\/www\.dianping\.com\/shop\/(\w+)/', $url,$matches);
         $id = $matches[1];
@@ -18,6 +12,7 @@ class Shopmodel extends FDZ_Model {
     }
 
     function get_by_id($id){
+        $this->load->model(array("citymodel","districtmodel"));
         $query = $this->db->select()->where(array("id"=>$id))->get($this->tablename);
 
         $shop = $query->row();
@@ -97,28 +92,5 @@ class Shopmodel extends FDZ_Model {
         return $ret;
     }
 
-    // function get_last_ten_entries()
-    // {
-    //     $query = $this->db->get('entries', 10);
-    //     return $query->result();
-    // }
-
-    // function insert_entry()
-    // {
-    //     $this->title   = $_POST['title']; // please read the below note
-    //     $this->content = $_POST['content'];
-    //     $this->date    = time();
-
-    //     $this->db->insert('entries', $this);
-    // }
-
-    // function update_entry()
-    // {
-    //     $this->title   = $_POST['title'];
-    //     $this->content = $_POST['content'];
-    //     $this->date    = time();
-
-    //     $this->db->update('entries', $this, array('id' => $_POST['id']));
-    // }
 
 }

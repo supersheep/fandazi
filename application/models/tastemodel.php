@@ -10,8 +10,4 @@ class Tastemodel extends FDZ_Model{
 		return count($row) ? $row : null;
 	}
 
-	function insert($data){
-		$this->db->insert($this->tablename,$data);
-	}
-
 }

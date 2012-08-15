@@ -6,7 +6,7 @@ class FDZ_Controller extends CI_Controller{
 
 		parent::__construct();
 		$this->load->model("usermodel");
-		$logged = $this->usermodel->logged();
+		$logged = $this->logged = $this->usermodel->logged();
 		if($logged){
 			$this->current_user = $this->usermodel->current();
 		}else{
@@ -26,6 +26,7 @@ class FDZ_Controller extends CI_Controller{
 		}
 		
 		$this->data["current_user"] = $this->current_user;
+		$this->data["logged"] = $this->logged;
 
 		$this->load->view("frag/header",$this->data);
 		$this->load->view("pages/".$this->view,$this->data);

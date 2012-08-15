@@ -4,13 +4,17 @@
 </div>
 </div>
 
-<script type="text/javascript">
 <?php if(isset($jsdata)):?>
+<script type="text/javascript">
 $(window).data(<?=json_encode($jsdata);?>);
-<?php endif;?>
 </script>
+<?php endif;?>
 <?php foreach($js as $j):?>
 <script type="text/javascript" src="/s/j/<?=$j;?>.js"></script>
 <?php endforeach;?>
-
+<?php if(isset($jsmain)):?>
+<script type="text/javascript">
+	seajs.use("page/<?=$jsmain;?>");
+</script>
+<?php endif;?>
 </body></html>

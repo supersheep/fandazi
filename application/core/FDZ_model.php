@@ -13,9 +13,20 @@ class FDZ_Model extends CI_Model{
 		return $query->row();
 	}
 
+	public function get_one_by_data($data){
+		$query = $this->db->select()->where($data)->get($this->tablename);
+		return $query->row();
+	}
+
 	public function get_all(){
 		$query = $this->db->select()->get($this->tablename);
 		return $query->result();
+	}
+
+
+
+	public function insert($data){
+		$this->db->insert($this->tablename,$data);
 	}
 }
 

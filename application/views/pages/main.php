@@ -25,7 +25,9 @@
 			<?php foreach($meals as $meal):?>
 			<div class="dating">
 				<div class="pic">
-					<img src="<?=$meal->pic_small;?>" alt="">
+					<a href="/meal/<?=$meal->id;?>">
+						<img src="<?=$meal->pic_small;?>" alt="">
+					</a>
 				</div>
 				<div class="info">
 					<div class="title"><?=$meal->title;?></div>

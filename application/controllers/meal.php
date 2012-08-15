@@ -51,6 +51,11 @@ class Meal extends FDZ_Controller {
 					"hash" => $hash
 				));
 				$id = $this->db->insert_id();
+
+				$this->participantmodel->insert(array(
+					"user_id"=>$this->current_user->id,
+					"meal_id"=>$id
+				));
 			}
 
 			redirect("/meal/".$id);
@@ -60,24 +65,25 @@ class Meal extends FDZ_Controller {
 
 	public function show($id){
 
-		$this->load->model("mealmodel");
-
-		$meal = $this->mealmodel->get_by_id($id);
-
 
 		$this->view = "meal_show";
+
+		$this->load->model("mealmodel");
+		$meal = $this->mealmodel->get_by_id($id);
 		$meal = $this->mealmodel->get_full_info($meal);
 
+		$ishost = $this->current_user->id === $meal->host;
 
 		$this->data = array(
 			"jsdata"=>array(
+				"userid"=>$this->current_user ? $this->current_user->id : "null",
+				"mealid"=>$meal->id,
 				"cityid"=>$meal->shop->city
 			),
 			"css"=>array("meal"),
+			"jsmain"=>"meal", 
+			"ishost"=>$ishost,
 			"meal"=>$meal
-		);
-		$this->data["jsdata"] = array(
-			"cityid"=>$meal->shop->city
 		);
 		$this->data["meal"] = $meal;
 		parent::header();

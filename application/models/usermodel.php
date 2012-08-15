@@ -120,7 +120,9 @@ class Usermodel extends FDZ_Model{
 				return true;
 			}else{
 			// 反之则未登录，清理session
-				$this->sessionmodel->delete_by_email($emal);
+				$this->sessionmodel->delete_by_email($email);
+				delete_cookie($this->cookie_name);
+				delete_cookie($this->cookie_email);
 				return false;
 			}
 			

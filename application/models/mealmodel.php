@@ -4,10 +4,6 @@ class Mealmodel extends FDZ_Model{
 
 	var $tablename = "fdz_meal";
 
-	function insert($data){
-		$this->db->insert($this->tablename,$data);
-	}
-
 	function get_by_hash($hash){
 		$query = $this->db->select()->where(array("hash"=>$hash))->get($this->tablename);
 		return $query->row();

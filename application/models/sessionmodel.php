@@ -10,10 +10,6 @@ class Sessionmodel extends FDZ_Model{
 		return $query->row();
 	}
 
-	function insert($data){
-		$this->db->insert($this->tablename,$data);
-	}
-
 	function delete_by_session($session){
 		$this->db->where('session',$session);
 		$this->db->delete($this->tablename);
