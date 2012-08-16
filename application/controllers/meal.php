@@ -63,6 +63,12 @@ class Meal extends FDZ_Controller {
 		}
 	}
 
+	public function upload_poster($id){
+		$this->view = "meal_upload_poster";
+		parent::header();
+	}
+
+
 	public function show($id){
 
 
