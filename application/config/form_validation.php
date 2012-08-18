@@ -9,7 +9,7 @@ $config = array(
 	    array(
         	'field' => 'date',
         	'label' => '活动时间',
-        	'rules' => 'required'
+        	'rules' => 'required|callback_date'
 	    ),
 	    array(
 	       'field' => 'describe',
@@ -19,7 +19,7 @@ $config = array(
 	    array(
             'field' => 'dpurl',
             'label' => '商户链接',
-            'rules' => 'required'
+            'rules' => 'required|callback_dpurl'
         )
     )
 );

@@ -26,7 +26,7 @@ class Shopmodel extends FDZ_Model {
         return $shop;
     }
 
-    function scratch($url){
+    function scratch($url,$debug=false){
         $this->load->model(array("citymodel","districtmodel","tastemodel"));
         $this->load->library("simple_html_dom");
 
@@ -65,13 +65,26 @@ class Shopmodel extends FDZ_Model {
         $district = $this->districtmodel->get_by_name($districtname);
         $taste = $this->tastemodel->get_by_name($tastename);
 
+
+        if($debug){
+            return array(
+                "name"=>$name,
+                "districtname"=>$districtname,
+                "cityname"=>$cityname,
+                "tastename"=>$tastename,
+                "bizarea"=>$bizarea,
+                "type"=>$type,
+                "average"=>$average
+            );
+        }
+
+        
         if(is_null($taste)){
             $this->tastemodel->insert(array(
                 "name"=>$name));
             $taste = new stdClass();
             $taste->id = $this->db->insert_id();
         }
-
 
         // bizarea to db
         $arr = array(

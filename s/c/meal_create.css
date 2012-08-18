@@ -3,20 +3,31 @@
   background: #fff;
   border-radius: 5px;
 }
-#bd form {
-  padding: 50px;
+#bd .steps{
+	padding:40px 40px 0 40px;
 }
-#bd form label{
+#bd .steps .step{
+	float:left;
+	margin-left:20px;
+} 
+#bd .steps .current{
+	color:#689FBF;
+}
+#bd .create-form {
+  padding: 50px;
+  width:460px;
+}
+#bd .create-form label{
 	float:left;
 	padding:4px 0;
 }
-#bd form .item {
+#bd .create-form .item {
   margin-bottom: 20px;
   margin-left:110px;
   display:block;
 }
 
-#bd form .err {
+#bd .create-form .err {
 	color:#F30;
 	margin-left:5px;
 	margin-top:3px;
@@ -24,7 +35,7 @@
 	display: inline-block;
 }
 
-#bd form .item input,#bd form .item textarea{
+#bd .create-form .item input,#bd .create-form .item textarea{
 	width: 350px;
   	border-radius: 3px;
 	box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
@@ -34,11 +45,18 @@
   	line-height: 24px;
 }
 
-#bd form .btn{
-	float:left;
+#bd .create-form .btn{
+	float:right;
 	padding:4px 10px;
-	margin-left:410px;
 }
+
+
+#bd .create-form .btn-cancel{
+	float:right;
+	padding:4px 10px;
+	margin-left:10px;
+}
+
 
 #bd #date{
 	width:240px;
@@ -55,4 +73,29 @@
 	outline: none;
 	padding: 4px 6px;
 	line-height: 24px;
+}
+
+
+
+.upload_poster{
+
+}
+
+.upload_poster .preview{
+	float:left;
+	margin:20px;
+}
+
+
+.upload_poster .preview .img{
+	border:1px dashed #689FBF;
+}
+
+.upload_poster .upload{
+	margin:0 20px;
+	float:left;
+}
+
+.upload_poster .upload .btn{
+	padding:4px 10px;
 }
