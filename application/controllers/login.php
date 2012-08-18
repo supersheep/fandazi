@@ -5,7 +5,7 @@ class Login extends FDZ_Controller{
 	public function index(){
 
 		$this->load->helper('url');
-		$this->load->library('session');
+		$this->load->library(array('session','user_agent'));
 		$this->load->model('usermodel');
 		
 		$email = $this->input->post('email');
@@ -20,7 +20,7 @@ class Login extends FDZ_Controller{
 			$login_code = $this->usermodel->login($email,$password);
 		
 			if($login_code == 1){
-				redirect('/');
+				redirect(urldecode($this->input->get("redir")));
 			}else{
 				$this->data["errcode"] = $login_code;
 			}
