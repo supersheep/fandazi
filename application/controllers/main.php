@@ -19,7 +19,7 @@ class Main extends FDZ_Controller{
 			"cate" => $this->categorymodel->get_all(),
 			"meals" => $meals_full_info
 		);
-		parent::header();
+		$this->header();
 	}
 
 

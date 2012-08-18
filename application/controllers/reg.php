@@ -9,7 +9,7 @@ class Reg extends FDZ_Controller {
 		$this->data["css"] = array("reg");
 		$this->data["cities"] = $this->citymodel->get_all();
 		$this->view = "reg";
-		parent::header();
+		$this->header();
 	}
 }
 

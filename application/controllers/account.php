@@ -13,7 +13,7 @@ class Account extends FDZ_Controller{
 		);
 
 		$this->view = "account_setting";
-		parent::header();
+		$this->header();
 	}
 
 

@@ -28,7 +28,7 @@ class Login extends FDZ_Controller{
 
 		$this->data["css"] = array("reg");
 		$this->view = "login";
-		parent::header();
+		$this->header();
 	}
 
 

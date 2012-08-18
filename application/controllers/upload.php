@@ -13,5 +13,11 @@ class Upload extends FDZ_Controller{
 		$this->echoscript(1);
 	}
 
+	function avatar(){}
+
+	function poster(){
+		
+	}
+
 }
 

@@ -80,10 +80,24 @@ class Meal extends FDZ_Controller {
 
 	public function upload_poster($id){
 		$this->view = "meal_upload_poster";
-		$this->data = array(
-			"css" => array("meal_create")
-		);
-		parent::header();
+		$this->load->model("mealmodel");
+		$this->load->helper("url");
+		$meal = $this->mealmodel->get_by_id($id);
+
+		if(!$this->logged){
+			redirect("/login?redir=".urlencode(current_url()));
+		}else{
+			if($meal->host == $this->current_user->id){
+				$this->view = "noauthority";
+				$this->header();
+			}else{
+				$this->data = array(
+					"css" => array("meal_create")
+				);
+				$this->header();
+			}
+		}
+
 	}
 
 	public function show($id){
@@ -113,7 +127,7 @@ class Meal extends FDZ_Controller {
 			"meal"=>$meal
 		);
 		$this->data["meal"] = $meal;
-		parent::header();
+		$this->header();
 	}
 
 

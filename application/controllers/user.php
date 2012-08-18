@@ -11,7 +11,7 @@ class User extends FDZ_Controller{
 			"user" => $user
 		);
 		$this->view = "user";
-		parent::header();
+		$this->header();
 	}
 
 
