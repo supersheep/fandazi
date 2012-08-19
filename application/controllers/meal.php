@@ -140,11 +140,11 @@ class Meal extends FDZ_Controller {
 
 	/* validation functions */
 
-	public function dpurl($str){
+	public function valid_dpurl($str){
 		return (bool) preg_match("/^http:\/\/www\.dianping\.com\/shop\/(\w)+/", $str);
 	}
 
-	public function date($str){
+	public function valid_date($str){
 		return (bool) preg_match("/^\d{4}-\d{2}-\d{2}$/",$str);
 	}
 

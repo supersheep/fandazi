@@ -1,15 +1,16 @@
 <?php
 
 $lang['required']			= "请填写%s";
-$lang['dpurl']				= "链接不合法";
-$lang['date']				= "日期格式不合法";
 $lang['isset']				= "The %s field must have a value.";
-$lang['valid_email']		= "The %s field must contain a valid email address.";
+$lang['valid_dpurl']		= "链接不合法";
+$lang['valid_invitecode']	= "邀请码错误";
+$lang['valid_date']			= "日期格式不合法";
+$lang['valid_email']		= "邮箱格式不合法";
 $lang['valid_emails']		= "The %s field must contain all valid email addresses.";
 $lang['valid_url']			= "The %s field must contain a valid URL.";
 $lang['valid_ip']			= "The %s field must contain a valid IP.";
-$lang['min_length']			= "The %s field must be at least %s characters in length.";
-$lang['max_length']			= "The %s field can not exceed %s characters in length.";
+$lang['min_length']			= "%s至少包含%s个字符";
+$lang['max_length']			= "%s至多包含%s个字符";
 $lang['exact_length']		= "The %s field must be exactly %s characters in length.";
 $lang['alpha']				= "The %s field may only contain alphabetical characters.";
 $lang['alpha_numeric']		= "The %s field may only contain alpha-numeric characters.";
@@ -19,7 +20,7 @@ $lang['is_numeric']			= "The %s field must contain only numeric characters.";
 $lang['integer']			= "The %s field must contain an integer.";
 $lang['regex_match']		= "The %s field is not in the correct format.";
 $lang['matches']			= "The %s field does not match the %s field.";
-$lang['is_unique'] 			= "The %s field must contain a unique value.";
+$lang['is_unique'] 			= "%s已存在";
 $lang['is_natural']			= "The %s field must contain only positive numbers.";
 $lang['is_natural_no_zero']	= "The %s field must contain a number greater than zero.";
 $lang['decimal']			= "The %s field must contain a decimal number.";
