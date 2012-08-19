@@ -14,6 +14,14 @@ class FDZ_Controller extends CI_Controller{
 		}
 	}
 
+	// 若未登录
+	function checklogin(){
+		if(!$this->logged){
+			$redir = "?redir=".urlencode(current_url());
+			redirect("/login".$redir);
+		}
+	}
+
 	public function header(){
 		if(!isset($this->data)){
 			$this->data = array();

@@ -47,10 +47,12 @@
   float: left;
   width: 500px;
   height: 300px;
+  text-align: center;
   overflow: hidden;
 }
 .meal-info .meal-pic img {
-  width: 500px;
+  max-width: 500px;
+  max-height:375px;
 }
 .meal-dishes {
   background: #fff;

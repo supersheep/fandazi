@@ -6,7 +6,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		window.top.alert("<?=$msg;?>")
+		window.parent.upload_<?=$type;?>("<?=$msg;?>");
 	</script>
 </body>
 </html>

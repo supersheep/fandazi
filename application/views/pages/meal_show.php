@@ -21,7 +21,7 @@
 				<!--div class="meal-full">人数已满</div-->
 			</div>
 			<div class="meal-pic">
-				<img src="<?=$meal->pic_large;?>">
+				<img src="<?=$meal->pic_middle;?>">
 			</div>
 			</div>
 		</div>

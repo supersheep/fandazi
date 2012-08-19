@@ -98,4 +98,6 @@
 
 .upload_poster .upload .btn{
 	padding:4px 10px;
+	line-height: 16px;
+	margin-right: 8px;
 }

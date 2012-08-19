@@ -28,5 +28,9 @@ class FDZ_Model extends CI_Model{
 	public function insert($data){
 		$this->db->insert($this->tablename,$data);
 	}
+
+	public function update($id,$data){
+		$this->db->where(array("id"=>$id))->update($this->tablename,$data);
+	}
 }
 

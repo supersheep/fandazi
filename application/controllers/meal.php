@@ -14,15 +14,14 @@ class Meal extends FDZ_Controller {
 	}
 
 	public function create(){
+		// 若未登录
+		$this->checklogin();
+
+
 		$this->load->model(array('shopmodel','mealmodel','participantmodel'));
 		$this->load->library('form_validation');
 		$this->load->helper("url");
 
-		// 若未登录
-		if(!$this->logged){
-			$redir = "?redir=".urlencode(current_url());
-			redirect("/login".$redir);
-		}
 
 		// 表单验证不通过
 		if($this->form_validation->run() == FALSE){
@@ -34,7 +33,7 @@ class Meal extends FDZ_Controller {
 				"category" => $this->categorymodel->get_all(),
 				"css" => array("meal_create")
 			);
-			parent::header();
+			$this->header();
 		}else{
 		// 表单验证通过
 			$url = $this->input->post("dpurl");
@@ -79,23 +78,27 @@ class Meal extends FDZ_Controller {
 	}
 
 	public function upload_poster($id){
-		$this->view = "meal_upload_poster";
+
+		$this->checklogin();
+
+
 		$this->load->model("mealmodel");
 		$this->load->helper("url");
 		$meal = $this->mealmodel->get_by_id($id);
 
-		if(!$this->logged){
-			redirect("/login?redir=".urlencode(current_url()));
+		if($meal->host !== $this->current_user->id){
+			$this->view = "noauthority";
+			$this->header();
 		}else{
-			if($meal->host == $this->current_user->id){
-				$this->view = "noauthority";
-				$this->header();
-			}else{
-				$this->data = array(
-					"css" => array("meal_create")
-				);
-				$this->header();
-			}
+			$this->view = "meal_upload_poster";
+			$this->data = array(
+				"jsdata"=>array(
+					"mealid"=>$meal->id
+				),
+				"meal" => $this->mealmodel->get_full_info($meal),
+				"css" => array("meal_create")
+			);
+			$this->header();
 		}
 
 	}
