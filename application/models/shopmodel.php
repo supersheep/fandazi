@@ -81,7 +81,7 @@ class Shopmodel extends FDZ_Model {
         
         if(is_null($taste)){
             $this->tastemodel->insert(array(
-                "name"=>$name));
+                "name"=>$tastname));
             $taste = new stdClass();
             $taste->id = $this->db->insert_id();
         }

@@ -6,14 +6,14 @@
 		<div class="step">3.完成创建</div>
 	</div>
 
-	<iframe src="" frameborder="0" name="upload" width="500" height="100" style=""></iframe>
+	<iframe src="" frameborder="0" name="upload" width="0" height="0" style=""></iframe>
 	<div class="upload_poster clear">
 		<div class="preview">
 			<img src="<?=$meal->pic_middle;?>" alt="" class="img" id="img_preview">
 		</div>
 		<form action="/upload/poster" target="upload" method="post" class="upload" enctype="multipart/form-data">
 			<input type="hidden" name="mealid" value="<?=$meal->id;?>">
-			<div style="margin:40px 0 20px 0;">从你的电脑中挑选一张喜爱的图片</div>
+			<div style="margin:40px 0 20px 0;">从您的电脑中挑选一张喜爱的图片<br />选择宽高比为3x4的图片以获得最佳显示效果</div>
 			<div style='margin:20px 0;'><input type="file" name="userfile"></div>
 			<div id="submit-wrap"><input type="submit" value="上传" class="btn"></div>
 		</form>

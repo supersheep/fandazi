@@ -20,6 +20,15 @@
 .meal-info .meal-info-detail .meal-detail {
   margin-bottom: 10px;
 }
+
+.meal-info .meal-info-detail .info{
+  padding: 3px;
+  background-color: #FFFDEF;
+  border: 1px solid #D1A87B;
+  color: #D3A35B;
+  border-radius: 3px;
+}
+
 .meal-info .meal-info-detail .meal-detail .key {
   color: #777;
 }
@@ -54,6 +63,18 @@
   max-width: 500px;
   max-height:375px;
 }
+
+
+.meal-desc{
+  padding:20px;
+  background-color: #fff;
+}
+
+
+.meal-desc .key{
+  color:#4A86B4;
+}
+
 .meal-dishes {
   background: #fff;
 }

@@ -73,7 +73,7 @@ class Uploadmodel extends FDZ_Model{
 	
 	function create_small(){
 		$image_path = $this->origin_path;
-		$this->resize_in($image_path,"small",120,120);
+		$this->resize_in($image_path,"small",160,120);
 	}
 
 	function create_middle(){

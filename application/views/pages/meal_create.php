@@ -20,7 +20,7 @@
 			<option value="18:30">18:30</option>
 			<option value="19:30">19:30</option>
 		</select><?=form_error("date");?></div></div>
-		<div class="row"><label for="describe">活动介绍</label><div class="item"><textarea name="describe" id="describe" cols="30" rows="5" value="<?=set_value('describe');?>"></textarea><?=form_error("describe");?></div></div>
+		<div class="row"><label for="describe">活动介绍</label><div class="item"><textarea name="describe" id="describe" cols="30" rows="5"><?=set_value('describe');?></textarea><?=form_error("describe");?></div></div>
 		<div class="row"><label for="dpurl">大众点评商户</label><div class="item"><input type="text" id="dpurl" name="dpurl" value="http://"><?=form_error("dpurl");?></div></div>
 		<div class="row">
 			<a href="/" class="btn-cancel">取消</a>

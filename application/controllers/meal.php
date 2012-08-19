@@ -108,7 +108,7 @@ class Meal extends FDZ_Controller {
 
 		$this->view = "meal_show";
 
-		$this->load->model("mealmodel");
+		$this->load->model(array("usermodel","mealmodel"));
 		$meal = $this->mealmodel->get_by_id($id);
 		$meal = $this->mealmodel->get_full_info($meal);
 
@@ -127,6 +127,7 @@ class Meal extends FDZ_Controller {
 			"css"=>array("meal"),
 			"jsmain"=>"meal", 
 			"ishost"=>$ishost,
+			"host"=>$this->usermodel->get_by_id($meal->host),
 			"meal"=>$meal
 		);
 		$this->data["meal"] = $meal;
