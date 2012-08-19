@@ -23,6 +23,9 @@ class FDZ_Model extends CI_Model{
 		return $query->result();
 	}
 
+	public function delete_by_data($data){
+		$this->db->where($data)->delete($this->tablename);
+	}
 
 
 	public function insert($data){

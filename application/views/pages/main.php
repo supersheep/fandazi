@@ -6,16 +6,18 @@
 			<div class="filter-row">
 				<div class="title">餐馆：</div>
 				<div class="tags">
+				<a class="tag" href="/?cate=<?=$cateid;?>&taste=all">全部</a>
 				<?php foreach($taste as $tst):?>
-					<a class="tag"><?=$tst->name;?></a>
+					<a class="tag" href="/?cate=<?=$cateid;?>&taste=<?=$tst->id;?>"><?=$tst->name;?></a>
 				<?php endforeach;?></div>
 			</div>
 
 			<div class="filter-row">
 				<div class="title">标签</div>
 				<div class="tags">
+				<a class="tag" href="/?cate=all&taste=<?=$tasteid;?>">全部</a>
 				<?php foreach($cate as $cat):?>
-					<a class="tag"><?=$cat->name;?></a>
+					<a class="tag" href="/?cate=<?=$cat->id;?>&taste=<?=$tasteid;?>"><?=$cat->name;?></a>
 				<?php endforeach;?>
 				</div>
 			</div>

@@ -41,11 +41,19 @@
   padding: 3px 20px;
   margin-bottom: 20px;
 }
+
 .meal-info .meal-info-detail .meal-attend {
   text-shadow: 0px 1px 1px #666;
   box-shadow: 0 2px 2px -1px #999;
+  cursor:pointer;
   background-image: -webkit-linear-gradient(#a0c0dc 0%, #689fbf 100%);
 }
+
+.meal-info .meal-info-detail .meal-attend-sure{
+  color:#060;
+  margin-right:10px;
+}
+
 .meal-info .meal-info-detail .meal-full {
   background-color: #eee;
   border: 1px solid #ccc;

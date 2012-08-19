@@ -22,7 +22,11 @@
 				<div class="info">活动已创建，请等待审核通过，会有站内消息通知 :)</div>
 				<?php endif;?>
 				<?php if(!$ishost && $logged && $meal->status==1):?>
-				<div class="meal-attend" id="J_attend">马上参加</div>
+					<?php if($attended):?>
+						<div><span class="meal-attend-sure">我要参加</span><a href="javascript:;" id="J_unattend">取消</a></div>
+					<?php else:?>
+						<div class="meal-attend" id="J_attend">我要参加</div>
+					<?php endif;?>
 				<?php endif;?>
 			</div>
 			<div class="meal-pic">

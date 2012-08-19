@@ -14,6 +14,12 @@ class FDZ_Controller extends CI_Controller{
 		}
 	}
 
+	function error($msg){
+		$this->view = "pageerror";
+		$this->data["msg"] = $msg;
+		$this->header();
+	}
+
 	// 若未登录
 	function checklogin(){
 		if(!$this->logged){

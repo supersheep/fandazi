@@ -60,9 +60,11 @@ class Meal extends FDZ_Controller {
 					"host" => $host,
 					"start" => $start,
 					"createtime" => date('Y-m-d h:i:s'),
+					"category" => $this->input->post("category"),
 					"describe" => $this->input->post("describe"),
 					"status" => 0,
-					"hash" => $hash
+					"hash" => $hash,
+					"attend_count" => 1
 				));
 				$id = $this->db->insert_id();
 
@@ -87,8 +89,7 @@ class Meal extends FDZ_Controller {
 		$meal = $this->mealmodel->get_by_id($id);
 
 		if($meal->host !== $this->current_user->id){
-			$this->view = "noauthority";
-			$this->header();
+			$this->error("您没有该页面的访问权限");
 		}else{
 			$this->view = "meal_upload_poster";
 			$this->data = array(
@@ -108,8 +109,14 @@ class Meal extends FDZ_Controller {
 
 		$this->view = "meal_show";
 
-		$this->load->model(array("usermodel","mealmodel"));
+		$this->load->model(array("usermodel","mealmodel","participantmodel"));
 		$meal = $this->mealmodel->get_by_id($id);
+
+		if(!count($meal)){
+			$this->error("该聚餐不存在");
+			return;
+		}
+
 		$meal = $this->mealmodel->get_full_info($meal);
 
 		if($this->logged){
@@ -118,12 +125,30 @@ class Meal extends FDZ_Controller {
 			$ishost = false;
 		}
 
+		if($this->logged){
+
+			$attend = $this->participantmodel->get_one_by_data(array(
+				"user_id" => $this->current_user->id,
+				"meal_id" => $meal->id
+			));
+			if(count($attend)){
+				$attended = true; 
+			}else{
+				$attended = false;
+			}
+
+		}else{
+			$attended = false;
+		}
+
+
 		$this->data = array(
 			"jsdata"=>array(
 				"userid"=>$this->current_user ? $this->current_user->id : "null",
 				"mealid"=>$meal->id,
 				"cityid"=>$meal->shop->city
 			),
+			"attended" => $attended,
 			"css"=>array("meal"),
 			"jsmain"=>"meal", 
 			"ishost"=>$ishost,

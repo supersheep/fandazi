@@ -33,6 +33,7 @@ class Ajax extends FDZ_Controller{
 				$this->error("已报名");
 			}else{
 				$this->participantmodel->insert($data);
+				$this->mealmodel->add_one_attender($meal->id);
 				$this->success("报名成功");
 			};
 		}
@@ -62,6 +63,7 @@ class Ajax extends FDZ_Controller{
 				$this->error("发起人无法直接取消");
 			}else{
 				$this->participantmodel->delete_by_data($data);
+				$this->mealmodel->remove_one_attender($meal->id);
 				$this->success("取消报名成功");
 			};
 		}
@@ -74,7 +76,7 @@ class Ajax extends FDZ_Controller{
 		));
 	}
 	
-	private function error($msg){
+	function error($msg){
 	
 		echo json_encode(array(
 			'code'=>500,
@@ -82,7 +84,7 @@ class Ajax extends FDZ_Controller{
 		));
 	}
 	
-	private function success($result){
+	function success($result){
 		echo json_encode(array(
 			'code'=>200,
 			'msg'=>$result

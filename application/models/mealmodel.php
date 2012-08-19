@@ -9,14 +9,32 @@ class Mealmodel extends FDZ_Model{
 		return $query->row();
 	}
 
-	function get_last($limit=10,$offset=0){
-
-		$query = $this->db->select()->where(array("status"=>1))->get($this->tablename,$limit,$offset);
+	function get_last($data=array(),$limit=10,$offset=0){
+		$where = array($this->tablename.".status"=>1) + $data;
+		$query = $this->db->select("fdz_meal.id,shop_id,title,pic,host,start,createtime,describe,fdz_meal.status,attend_count,name")
+			->join('fdz_shop', 'fdz_shop.id = fdz_meal.shop_id')
+			->where($where)->get($this->tablename,$limit,$offset);
+		
 		return $query->result();
 	}
 
+	function add_one_attender($id){
+		$this->db->set("attend_count","attend_count+1",FALSE);
+		$this->db->where(array("id"=>$id));
+		$this->db->update($this->tablename);
+	}
+
+
+	function remove_one_attender($id){
+		$this->db->set("attend_count","attend_count-1",FALSE);
+		$this->db->where(array("id"=>$id));
+		$this->db->update($this->tablename);
+	}
+
+
 	function get_full_info($meal){
 		$this->load->model(array("shopmodel","usermodel","picturemodel","participantmodel","mealmodel"));
+
 		if(!is_null($meal)){
 			$shop = $this->shopmodel->get_by_id($meal->shop_id);
 

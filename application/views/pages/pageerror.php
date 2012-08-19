@@ -1,7 +1,7 @@
 <div id="id" style="background-color:#fff;width:960px;margin:20px auto;">
 	
 	<div style="padding:120px 0;text-align:center;">
-		您没有该页面的访问权限
+		<?=$msg;?>
 	</div>
 
 </div>
