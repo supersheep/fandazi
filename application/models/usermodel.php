@@ -37,7 +37,7 @@ class Usermodel extends FDZ_Model{
 		}
 	}
 
-	function login($email,$password){
+	function login($email,$password,$ignorepwd=false){
 		$this->load->library(array('user_agent','session'));
 		$this->load->model("sessionmodel");
 
@@ -50,7 +50,8 @@ class Usermodel extends FDZ_Model{
 			return -1;
 		}
 
-		if($user->password !== $password){
+
+		if($user->password !== $password && !$ignorepwd){
 			// 密码错误
 			return -2;
 		}
