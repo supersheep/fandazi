@@ -1,0 +1,52 @@
+#bd{
+	width:960px;
+	padding:20px;
+	background-color: #fff;
+}
+
+#bd .avatar_form{
+	float:left;
+	margin-left:20px;
+}
+
+#bd .avatar_form input{
+	display:block;
+	margin-bottom:15px;
+}
+
+#bd #avatar_img{
+	float:left;
+	width:100px;
+	height:100px;
+}
+
+#bd #info_form{
+	width:390px;
+}
+
+#bd .row{
+	padding:10px 0;
+}
+
+#bd .row .submit{
+	float:right;
+}
+
+
+
+#bd .row .textfield{
+	border-radius: 3px;
+	box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
+	border: 1px solid #CCC;
+	line-height: 16px;
+	outline: none;
+	padding: 4px 6px;
+	width: 250px;
+}
+
+#bd .row .label{
+	width:100px;
+	text-align: right;
+	margin-right:40px;
+	float:left;
+}

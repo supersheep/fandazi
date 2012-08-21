@@ -21,7 +21,11 @@ class Usermodel extends FDZ_Model{
 
 	function get_by_email($email){
 		$query = $this->db->select()->from($this->tablename)->where('email',$email)->get();
-		return $query->row();
+		$user = $query->row();
+		if(is_null($user->avatar)){
+			$user->avatar = "/s/i/default_avatar.png";
+		}
+		return $user;
 	}
 
 	/**
