@@ -44,7 +44,7 @@
 			<div class="head">发起人</div>
 			<div class="body">
 				<div class="user clear">
-					<img class="avatar" src="<?=$host->avatar;?>">
+					<img class="avatar" src="<?=$host->avatar_small;?>">
 					<a class="name" href="/user/<?=$host->id;?>"><?=$host->name?></a>
 					<p class="company"><?=$host->company;?></p>
 					<p class="duty"><?=$host->duty;?></p>
@@ -57,7 +57,7 @@
 			<div class="body">
 			<?php foreach($meal->participants as $user): ?>
 				<div class="user clear">
-					<img class="avatar" src="<?=$user->avatar;?>">
+					<img class="avatar" src="<?=$user->avatar_small;?>">
 					<a class="name" href="/user/<?=$user->id;?>"><?=$user->name?></a>
 					<p class="company"><?=$user->company;?></p>
 					<p class="duty"><?=$user->duty;?></p>

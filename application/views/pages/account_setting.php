@@ -5,7 +5,7 @@
 		<label class="label" for="avatar">头像</label>
 		<div class="avatar_wrap clear">
 			<img src="<?=$current_user->avatar;?>" alt="<?=$current_user->name;?>" id="avatar_img">
-			<form action="" target="ifrm_upload" class="avatar_form">
+			<form action="/upload/avatar" target="ifrm_upload" class="avatar_form" method="post" enctype="multipart/form-data">
 				<input type="file" name="userfile" id="userfile">
 				<input type="submit" value="开始上传" class="btn">
 			</form>
@@ -30,4 +30,13 @@
 	<div class="row clear"><label class="label" for="interests">兴趣</label><input type="text" class="textfield" name="interests" id="interests" value="<?=$current_user->interests;?>"></div>
 	<div class="row clear"><input type="submit" value="保存" class="btn submit"></div>
 	</form>
+	<script type="text/javascript">
+		function upload_success(msg){
+			$("#avatar_img").attr("src",msg);
+		}
+
+		function upload_fail(msg){
+			alert(msg);
+		}
+	</script>
 </div>

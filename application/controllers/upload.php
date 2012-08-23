@@ -27,7 +27,46 @@ class Upload extends FDZ_Controller{
 		));
 	}
 
-	function avatar(){}
+	function avatar(){
+
+		$this->load->model(array("picturemodel","uploadmodel"));
+
+		if(!$this->logged){
+			$this->fail("access deny");
+			return;
+		}
+
+		$origin_name = substr(md5($this->current_user->id.$this->current_user->name),0,10);
+
+		$path_name = "avatars";
+
+		if(!$this->uploadmodel->upload($origin_name,$path_name)){
+			$this->fail($this->uploadmodel->error());
+		}else{
+			$this->uploadmodel->create_large_avatar();
+			$this->uploadmodel->create_small_avatar();
+
+			$data = array(
+				"name" => $origin_name,
+				"path" => $path_name
+			);
+
+			
+			$pic = $this->picturemodel->get_by_name($origin_name);
+
+			if(!count($pic)){
+				$this->picturemodel->insert($data);
+				$this->usermodel->update($this->current_user->id,array(
+					"avatar" => $origin_name
+				));
+				$pic = (object) $data;
+			}
+			
+			$large_name = $this->picturemodel->large_name($pic);
+			$this->success($large_name);
+			 
+		}
+	}
 
 	function poster(){
 		// var_dump(is_dir('./poster/'));

@@ -7,24 +7,36 @@ class Usermodel extends FDZ_Model{
 	var $cookie_email = 'fdzua';
 	var $cookie_name = 'fdzsession'; 
 
+
+	private function dealavatar(&$user){
+		$this->load->model("picturemodel");
+		if(is_null($user->avatar)){
+			$user->avatar = "/s/i/default_avatar.png";
+			$user->avatar_small = "/s/i/default_avatar.png";
+		}else{
+			$avatar = (object) array(
+				"path" => "avatars",
+				"name" => $user->avatar);
+
+			$user->avatar = $this->picturemodel->large_name($avatar);
+			$user->avatar_small = $this->picturemodel->small_name($avatar);
+		}
+	}
+
 	/**
 	 * 基础数据库交互方法
 	 */
 	function get_by_id($id){
 		$query = $this->db->select()->where(array("id"=>$id))->get($this->tablename);
 		$user = $query->row();
-		if(is_null($user->avatar)){
-			$user->avatar = "/s/i/default_avatar.png";
-		}
+		$this->dealavatar($user);
 		return $user;
 	}
 
 	function get_by_email($email){
 		$query = $this->db->select()->from($this->tablename)->where('email',$email)->get();
 		$user = $query->row();
-		if(is_null($user->avatar)){
-			$user->avatar = "/s/i/default_avatar.png";
-		}
+		$this->dealavatar($user);
 		return $user;
 	}
 
