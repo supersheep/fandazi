@@ -23,6 +23,7 @@ class FDZ_Controller extends CI_Controller{
 	// 若未登录
 	function checklogin(){
 		if(!$this->logged){
+			$this->load->helper("url");
 			$redir = "?redir=".urlencode(current_url());
 			redirect("/login".$redir);
 		}
