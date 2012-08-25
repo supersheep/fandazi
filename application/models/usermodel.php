@@ -10,6 +10,9 @@ class Usermodel extends FDZ_Model{
 
 	private function dealavatar(&$user){
 		$this->load->model("picturemodel");
+		if(!count($user)){
+			return;
+		}
 		if(is_null($user->avatar)){
 			$user->avatar = "/s/i/default_avatar.png";
 			$user->avatar_small = "/s/i/default_avatar.png";
@@ -30,6 +33,7 @@ class Usermodel extends FDZ_Model{
 		$query = $this->db->select()->where(array("id"=>$id))->get($this->tablename);
 		$user = $query->row();
 		$this->dealavatar($user);
+
 		return $user;
 	}
 

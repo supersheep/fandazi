@@ -46,7 +46,9 @@ class Mealmodel extends FDZ_Model{
 
 			foreach ($participants as $key => $participant) {
 				$user = $this->usermodel->get_by_id($participant->user_id);
-				$attenders[] = $user;
+				if(count($user)){
+					$attenders[] = $user;
+				}
 			}
 
 			$pic_id = $meal->pic;
