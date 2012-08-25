@@ -56,7 +56,7 @@
 <div class="slide">
 	<ul>
 		<li class="spic">
-			<img src="s/i/jucan1.jpg" alt="">
+			<img src="/s/i/jucan1.jpg" alt="">
 		</li>
 	</ul>
 </div>
