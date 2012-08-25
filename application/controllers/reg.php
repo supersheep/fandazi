@@ -37,6 +37,7 @@ class Reg extends FDZ_Controller {
 			),true);
 
 			$this->usermodel->insert(array(
+				"password"=> md5($this->input->post("password")),
 				"name" => $this->input->post("name"),
 				"email" => $this->input->post("email"),
 				"city" => $this->input->post("city"),
@@ -46,7 +47,7 @@ class Reg extends FDZ_Controller {
 
 			$this->messagemodel->sendmail($this->db->insert_id(),$message);
 			$this->view = "reg_success";
-			$this->header();
+			$this->simpleheader();
 		}
 	}
 
@@ -60,8 +61,14 @@ class Reg extends FDZ_Controller {
 			$this->header();
 		}else{
 			$user = $this->usermodel->get_by_email($token->email);
-			$this->usermodel->login($user->email,null,true);
-			redirect("/");
+			$ret = $this->usermodel->login($token->email,null,true);
+			if($ret == -1){
+				$this->view = "pageerror";
+				$this->data["msg"] = "用户不存在";
+				$this->header();
+			}else{
+				redirect("/");
+			}; 
 		}
 	}
 

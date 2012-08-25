@@ -29,6 +29,22 @@ class FDZ_Controller extends CI_Controller{
 		}
 	}
 
+	public function simpleheader(){
+		if(!isset($this->data)){
+			$this->data = array();
+		}
+		if(!isset($this->data["js"])){
+			$this->data["js"] = array();
+		}
+		if(!isset($this->data["css"])){
+			$this->data["css"] = array();
+		}
+		
+		$this->load->view("frag/simpleheader",$this->data);
+		$this->load->view("pages/".$this->view,$this->data);
+		$this->load->view("frag/footer",$this->data);
+	}
+
 	public function header(){
 		if(!isset($this->data)){
 			$this->data = array();
@@ -46,7 +62,6 @@ class FDZ_Controller extends CI_Controller{
 		$this->load->view("frag/header",$this->data);
 		$this->load->view("pages/".$this->view,$this->data);
 		$this->load->view("frag/footer",$this->data);
-
 	}
 
 }
