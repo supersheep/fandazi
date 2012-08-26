@@ -16,17 +16,17 @@
 	<div class="row clear"><label class="label" for="company">公司</label><input type="text" class="textfield" name="company" id="company" value="<?=$current_user->company;?>"></div>
 	<div class="row clear"><label class="label" for="">职位</label><input type="text" class="textfield" name="duty" id="duty" value="<?=$current_user->company;?>"></div>
 	<div class="row clear"><label class="label" for="">城市</label><select name="city" id="city">
-		<?php foreach($cities as $city):?>
-		<option value="<?=$city->id;?>" <?php if($current_user->city==$city->id):?>selected<?php endif;?>><?=$city->name;?></option>
-		<?php endforeach;?>
+		<? foreach($cities as $city):?>
+		<option value="<?=$city->id;?>" <? if($current_user->city==$city->id):?>selected<? endif;?>><?=$city->name;?></option>
+		<? endforeach;?>
 	</select></div>
 	<div class="row clear"><label class="label" for="bio">个人介绍</label><textarea name="bio" class="textfield" id="bio" cols="30" row clears="10"><?=$current_user->bio;?></textarea></div>
 	<div class="row clear"><label class="label" for="school">毕业学校</label><input type="text" class="textfield" name="school" id="school" value="<?=$current_user->school;?>"></div>
 	<div class="row clear"><label class="label" for="graduation_year" value="<?=$current_user->graduation_year;?>">毕业年份</label>
 		<select name="graduation_year" id="graduation_year">
-			<?php for($i = (int) date("Y");$i > 1976;$i--):?>
-			<option value="<?=$i;?>" <?php if($current_user->graduation_year==$i):?>selected<?php endif;?>><?=$i;?></option>
-			<?php endfor;?>
+			<? for($i = (int) date("Y");$i > 1976;$i--):?>
+			<option value="<?=$i;?>" <? if($current_user->graduation_year==$i):?>selected<? endif;?>><?=$i;?></option>
+			<? endfor;?>
 		</select></div>
 	<div class="row clear"><label class="label" for="interests">兴趣</label><input type="text" class="textfield" name="interests" id="interests" value="<?=$current_user->interests;?>"></div>
 	<div class="row clear"><input type="submit" value="保存" class="btn submit"></div>

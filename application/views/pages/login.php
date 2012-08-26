@@ -10,17 +10,17 @@
 		<div class="row">
 			<label for="email">邮箱：</label>
 			<input type="text" id="email" name="email" />
-			<?php if($errcode == -1):?>
+			<? if($errcode == -1):?>
 			<span class="err">用户不存在</span>
-			<?php endif;?>
+			<? endif;?>
 		</div>
 
 		<div class="row">
 			<label for="password">密码：</label>
 			<input type="password" id="password" name="password" />
-			<?php if($errcode == -2):?>
+			<? if($errcode == -2):?>
 			<span class="err">密码错误</span>
-			<?php endif;?>
+			<? endif;?>
 		</div>
 
 		<div>

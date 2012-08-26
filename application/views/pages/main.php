@@ -7,24 +7,24 @@
 				<div class="title">餐馆：</div>
 				<div class="tags">
 				<a class="tag" href="/?cate=<?=$cateid;?>&taste=all">全部</a>
-				<?php foreach($taste as $tst):?>
+				<? foreach($taste as $tst):?>
 					<a class="tag" href="/?cate=<?=$cateid;?>&taste=<?=$tst->id;?>"><?=$tst->name;?></a>
-				<?php endforeach;?></div>
+				<? endforeach;?></div>
 			</div>
 
 			<div class="filter-row">
 				<div class="title">标签</div>
 				<div class="tags">
 				<a class="tag" href="/?cate=all&taste=<?=$tasteid;?>">全部</a>
-				<?php foreach($cate as $cat):?>
+				<? foreach($cate as $cat):?>
 					<a class="tag" href="/?cate=<?=$cat->id;?>&taste=<?=$tasteid;?>"><?=$cat->name;?></a>
-				<?php endforeach;?>
+				<? endforeach;?>
 				</div>
 			</div>
 		</div>
 
 		<div class="datings">
-			<?php foreach($meals as $meal):?>
+			<? foreach($meals as $meal):?>
 			<div class="dating">
 				<div class="pic">
 					<a href="/meal/<?=$meal->id;?>">
@@ -36,13 +36,13 @@
 					<div class="info-row">餐馆：<?=$meal->shop->name;?></div>
 					<div class="info-row">聚会将于<?=$meal->start;?>举行</div>
 					<div class="participants clear">
-						<?php foreach($meal->participants as $user): ?>
+						<? foreach($meal->participants as $user): ?>
 							<div class="user"> <img src="<?=$user->avatar;?>" alt="<?=$user->name;?>" class="avatar"> </div>
-						<?php endforeach;?>
+						<? endforeach;?>
 					</div>
 				</div>
 			</div>
-			<?php endforeach;?>
+			<? endforeach;?>
 		</div>
 
 		<div class="more">

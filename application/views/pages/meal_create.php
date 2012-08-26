@@ -10,9 +10,9 @@
 		
 		<div class="row"><label for="title">聚餐标题</label><div class="item"><input type="text" name="title" id="title" value="<?=set_value('title');?>" /><?=form_error("title");?></div></div>
 		<div class="row"><label for="category">活动分类</label><div class="item"><select name="category" id="category" value="<?=set_value('category');?>">
-			<?php foreach($category as $cate):?>
+			<? foreach($category as $cate):?>
 			<option value="<?=$cate->id;?>"><?=$cate->name;?></option>
-			<?php endforeach; ?>
+			<? endforeach; ?>
 		</select><?=form_error("category");?></div></div>
 		<div class="row"><label for="date">活动时间</label><div class="item"><input type="text" name="date" id="date" value="<?=set_value('date');?>"><select name="time" id="time">
 			<option value="16:30">16:30</option>
