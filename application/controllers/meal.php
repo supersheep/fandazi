@@ -60,7 +60,7 @@ class Meal extends FDZ_Controller {
 					"host" => $host,
 					"start" => $start,
 					"createtime" => date('Y-m-d h:i:s'),
-					"category" => $this->input->post("category"),
+					"cate" => $this->input->post("category"),
 					"describe" => $this->input->post("describe"),
 					"status" => 0,
 					"hash" => $hash,
