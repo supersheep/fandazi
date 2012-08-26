@@ -1,5 +1,4 @@
 <div id="bd" class="clear">
-	
 	<!-- 主体内容 -->
 	<div class="main">
 		<!-- 饭聚内容 -->
@@ -66,7 +65,5 @@
 			</div>
 		</div>
 	</div>
-
-</div>
 
 </div>

@@ -1,5 +1,8 @@
+
 #bd .main {
-  width: 720px;
+  float: left;
+  width: 760px;
+  margin-right: 20px;
   background: #fff;
 }
 #bd .main .filter {
@@ -98,7 +101,8 @@
 }
 
 #bd .aside {
-  width: 220px;
+  float: left;
+  width: 180px;
 }
 
 #bd .aside .btn{

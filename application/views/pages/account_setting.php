@@ -1,4 +1,5 @@
 <div id="bd">
+	<div class="main">
 	<iframe src="" frameborder="0" width="0" height="0" id="ifrm_upload" name="ifrm_upload"></iframe>
 	
 	<div class="row clear">
@@ -39,4 +40,5 @@
 			alert(msg);
 		}
 	</script>
+	</div>
 </div>

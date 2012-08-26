@@ -3,7 +3,7 @@
 	<a href="#">问题反馈</a>|<a href="#">加入我们</a>|<a href="#">关于我们</a>
 </div>
 </div>
-
+</div><?//end of wrap?>
 <?php if(isset($jsdata)):?>
 <script type="text/javascript">
 $(window).data(<?=json_encode($jsdata);?>);

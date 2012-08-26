@@ -1,8 +1,9 @@
-#bd {
+#bd .main{
   width: 960px;
   background: #fff;
   border-radius: 5px;
 }
+
 #bd .steps{
 	padding:40px 40px 0 40px;
 }

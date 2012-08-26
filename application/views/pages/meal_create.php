@@ -1,5 +1,5 @@
 <div id="bd">
-	
+	<div class="main">
 	<div class="steps clear">
 		<div class="step current">1.填写信息</div>
 		<div class="step">2.上传海报</div>
@@ -27,4 +27,5 @@
 			<input type="submit" value="下一步" class="btn" />
 		</div>
 	</form>
+</div>
 </div>

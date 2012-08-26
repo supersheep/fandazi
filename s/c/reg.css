@@ -8,15 +8,21 @@ legend {
   padding-bottom: 14px;
   position: static;
 }
+
+.inner{
+  position: relative;
+  overflow: hidden;
+}
+
 .welcome {
   font-size: 24px;
   color: #555;
   margin-bottom: 20px;
 }
 #bd {
-  margin: 40px auto;
   position: relative;
 }
+
 #form {
   width: 430px;
   background-color: #fff;
@@ -24,7 +30,6 @@ legend {
   padding: 40px 30px;
   position: relative;
   z-index: 5;
-  height: 415px;
 }
 #form .row {
   margin-bottom: 10px;

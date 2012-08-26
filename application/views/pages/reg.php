@@ -1,5 +1,6 @@
 
 <div id="bd">
+<div class="inner">
 <div id="form">
 	<div class="reg-form-inner">
 		<h3 class="welcome">欢迎来到饭搭子，你可以</h3>	
@@ -59,6 +60,7 @@
 			<img src="/s/i/jucan1.jpg" alt="">
 		</li>
 	</ul>
+</div>
 </div>
 </div>
 

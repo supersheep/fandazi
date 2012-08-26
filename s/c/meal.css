@@ -1,3 +1,14 @@
+#bd .main{
+  float:left;
+  width:760px;
+  margin-right:20px;
+}
+
+#bd .aside{
+  float:left;
+  width:180px;
+}
+
 .meal-info {
   background-color: #fff;
   margin-bottom: 20px;
