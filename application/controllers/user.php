@@ -7,12 +7,17 @@ class User extends FDZ_Controller{
 		$this->load->model("usermodel");
 		$user = $this->usermodel->get_by_id($id);
 
-		$this->data = array(
-			"user" => $user
-		);
-		$this->view = "user";
-		$this->header();
-	}
+		if(count($user)){
 
+			$this->data = array(
+				"user" => $user
+			);
+			$this->view = "user";
+			$this->header();
+		}else{
+
+			$this->error("该用户不存在");
+		}
+	}
 
 }
