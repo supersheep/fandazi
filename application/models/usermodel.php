@@ -69,7 +69,10 @@ class Usermodel extends FDZ_Model{
 			// 用户不存在
 			return -1;
 		}
-
+		
+		if($user->status == 0){
+			return -1;
+		}
 
 		if($user->password !== $password && !$ignorepwd){
 			// 密码错误

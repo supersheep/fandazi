@@ -28,7 +28,8 @@ class Reg extends FDZ_Controller {
 
 			$this->tokenmodel->insert(array(
 				"code" => $code,
-				"email" => $email
+				"email" => $email,
+				"status" => 0
 			));
 
 
@@ -55,12 +56,21 @@ class Reg extends FDZ_Controller {
 		$this->load->model(array("usermodel","tokenmodel"));
 		$this->load->helper("url");
 		$token = $this->tokenmodel->get_by_code($code);
-		if(!count($token)){
+		if(!count($token) || $token->status == 1){
 			$this->view = "pageerror";
 			$this->data["msg"] = "激活码不存在";
 			$this->header();
 		}else{
+
 			$user = $this->usermodel->get_by_email($token->email);
+
+			$this->usermodel->update($user->id,array(
+				"status" =>1
+			));
+			$this->tokenmodel->update($token->id,array(
+				"status" =>1
+			));
+
 			$ret = $this->usermodel->login($token->email,null,true);
 			if($ret == -1){
 				$this->view = "pageerror";

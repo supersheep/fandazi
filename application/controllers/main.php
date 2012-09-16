@@ -29,12 +29,22 @@ class Main extends FDZ_Controller{
 			$meals_full_info[] = $this->mealmodel->get_full_info($meal);
 		}
 
+		$hotuser = array();
+		$hotmeal = $this->mealmodel->get_last(array(),5,0,"attend_count");
+		$hotshop = array();
+		$lastmeal = array();
+
+
 		$this->data = array(
 			"css"=>array("index"),
 			"taste" => $this->tastemodel->get_all(),
 			"cate" => $this->categorymodel->get_all(),
 			"meals" => $meals_full_info,
 			"cateid" => $cateid=="" ? "all" : $cateid,
+			"hotuser" => $hotuser,
+			"hotmeal" => $hotmeal,
+			"hotshop" => $hotshop,
+			"lastmeal" => $lastmeal,
 			"tasteid" => $tasteid=="" ? "all" : $tasteid,
 		);
 		$this->header();

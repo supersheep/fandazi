@@ -56,15 +56,40 @@
 	<div class="aside">
 		<div class="box"><a href="/meal/create" class="btn">发起聚餐</a></div>
 		<div class="box">
-		<div class="head">今日聚餐</div>
-		<div class="body"></div>
+		<div class="head">即将开始</div>
+		<div class="body">
+			
 		</div>
+		</div>
+		
 		<div class="box">
-		<div class="head">热门餐馆</div>
-		<div class="body"></div>
+		<div class="head">热门聚餐</div>
+		<div class="body">
+			<? foreach($hotmeal as $meal): ?>
+				
+			<? endforeach; ?>
 		</div>
+		</div>
+		
+
 		<div class="box">
 		<div class="head">热门饭搭子</div>
+		<div class="body">
+			<? foreach($hotuser as $user): ?>
+			<? if(count($user)):?>
+				<div class="user clear">
+					<img class="avatar" src="<?=$user->avatar_small;?>">
+					<a class="name" href="/user/<?=$user->id;?>"><?=$user->name?></a>
+					<p class="company"><?=$user->company;?></p>
+					<p class="duty"><?=$user->duty;?></p>
+				</div>
+			<? endif;?>
+			<? endforeach;?>
+		</div>
+		</div>
+
+		<div class="box">
+		<div class="head">热门餐馆</div>
 		<div class="body"></div>
 		</div>
 	</div>

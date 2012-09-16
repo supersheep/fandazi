@@ -9,11 +9,11 @@ class Mealmodel extends FDZ_Model{
 		return $query->row();
 	}
 
-	function get_last($data=array(),$limit=10,$offset=0){
+	function get_last($data=array(),$limit=10,$offset=0,$by="start"){
 		$where = array($this->tablename.".status"=>1) + $data;
 		$query = $this->db->select("fdz_meal.id,shop_id,title,pic,host,start,createtime,describe,fdz_meal.status,attend_count,name")
 			->join('fdz_shop', 'fdz_shop.id = fdz_meal.shop_id')
-			->where($where)->get($this->tablename,$limit,$offset);
+			->where($where)->order_by($by,"desc")->get($this->tablename,$limit,$offset);
 		
 		return $query->result();
 	}
