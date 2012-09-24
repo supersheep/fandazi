@@ -23,6 +23,18 @@ $config = array(
             'rules' => 'required|callback_valid_invitecode'
         )
     ),
+    'mealdiscuss/create' => array(
+        array(
+            'field' => 'title',
+            'label' => '标题',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'content',
+            'label' => '内容',
+            'rules' => 'required'
+        )
+    ),
 	'meal/create' => array(
 		array(
         	'field' => 'title',

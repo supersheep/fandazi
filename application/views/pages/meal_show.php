@@ -36,6 +36,26 @@
 
 		<div class="meal-desc"><span class="key">活动介绍：</span><?=$meal->describe;?></div>
 		
+		<div class="discuss">
+			<div class="title">讨论<a href="/meal/<?=$meal->id;?>/discuss/create">发起话题</span></div>
+			<table class="content-list">
+				<tr>
+					<td width="54%"></td>
+					<td width="22%"></td>
+					<td width="12%"></td>
+					<td width="12%"></td>
+				</tr>
+				<? foreach($discuss as $dis):?>
+				<tr>
+					<td class="dtitle"><?=$dis->title;?></td>
+					<td class="dfrom"></td>
+					<td class="dreply"></td>
+					<td class="dtime"></td>
+				</td>
+				<? endforeach;?>
+			</table>
+
+		</div>
 	</div>
 	
 	<div class="aside">

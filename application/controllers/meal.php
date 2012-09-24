@@ -109,7 +109,7 @@ class Meal extends FDZ_Controller {
 
 		$this->view = "meal_show";
 
-		$this->load->model(array("usermodel","mealmodel","participantmodel"));
+		$this->load->model(array("usermodel","mealmodel","discussmodel","participantmodel"));
 		$meal = $this->mealmodel->get_by_id($id);
 
 		if(!count($meal)){
@@ -141,13 +141,14 @@ class Meal extends FDZ_Controller {
 			$attended = false;
 		}
 
-
+		$discussions = $this->discussmodel->get_by_refer_id($id);
 		$this->data = array(
 			"jsdata"=>array(
 				"userid"=>$this->current_user ? $this->current_user->id : "null",
 				"mealid"=>$meal->id,
 				"cityid"=>$meal->shop->city
 			),
+			"discuss"=>$discussions,
 			"attended" => $attended,
 			"css"=>array("meal"),
 			"jsmain"=>"meal", 
