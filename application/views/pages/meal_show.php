@@ -37,20 +37,20 @@
 		<div class="meal-desc"><span class="key">活动介绍：</span><?=$meal->describe;?></div>
 		
 		<div class="discuss">
-			<div class="title">讨论<a href="/meal/<?=$meal->id;?>/discuss/create">发起话题</span></div>
-			<table class="content-list">
+			<div class="title">讨论<a href="/meal/<?=$meal->id;?>/discuss/create">发起话题</a></div>
+			<table class="content-list" width="100%">
 				<tr>
-					<td width="54%"></td>
-					<td width="22%"></td>
-					<td width="12%"></td>
+					<td width="50%"></td>
+					<td width="20%"></td>
+					<td width="18%"></td>
 					<td width="12%"></td>
 				</tr>
 				<? foreach($discuss as $dis):?>
 				<tr>
-					<td class="dtitle"><?=$dis->title;?></td>
-					<td class="dfrom"></td>
-					<td class="dreply"></td>
-					<td class="dtime"></td>
+					<td class="dtitle"><a href="/meal/<?=$meal->id;?>/discuss/<?=$dis->id;?>"><?=$dis->title;?></a></td>
+					<td class="dfrom">来自 <a href="/user/<?=$dis->user;?>"><?=$dis->username;?></a></td>
+					<td class="dreply"><?=$dis->reply_count>0?$dis->reply_count." 回应":"";?></td>
+					<td class="dtime"><?=$dis->create_date;?></td>
 				</td>
 				<? endforeach;?>
 			</table>

@@ -142,6 +142,10 @@ class Meal extends FDZ_Controller {
 		}
 
 		$discussions = $this->discussmodel->get_by_refer_id($id);
+		foreach ($discussions as $dis){
+			$splited = explode(" ", $dis->create_time);
+			$dis->create_date = $splited[0];
+		}
 		$this->data = array(
 			"jsdata"=>array(
 				"userid"=>$this->current_user ? $this->current_user->id : "null",
