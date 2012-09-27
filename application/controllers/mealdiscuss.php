@@ -2,7 +2,47 @@
 	
 class Mealdiscuss extends FDZ_Controller{
 
-	public function show($meal_id,$discuession_id){
+	public function show($meal_id,$discussion_id){
+		$this->load->model(array(
+			"discussmodel",
+			"replymodel",
+			"picturemodel"
+			)
+		);
+		$this->load->library('form_validation');
+		$this->load->helper("url");
+
+		$this->view = "discuss_detail";
+
+		if($this->form_validation->run("mealdiscuss/show") == TRUE && $this->current_user){
+
+			
+			$this->replymodel->insert(array(
+				"refer_id"=>$discussion_id,
+				"user"=>$this->current_user->id,
+				"content"=>$this->input->post("content"),
+				"create_time"=>date("Y-m-d h:i:s")
+			));
+			redirect(current_url());
+		}else{
+			$discuss = $this->discussmodel->get_by_id($discussion_id);
+
+
+			$discuss->avatar = $this->picturemodel->small_name(array(
+				"name"=>$discuss->avatar,"path"=>"avatars"));
+
+			$replies = $this->replymodel->get_by_refer_id($discussion_id);
+			foreach($replies as $reply){
+				$reply->avatar = $this->picturemodel->small_name(array(
+					"name"=>$reply->avatar,"path"=>"avatars"));
+			}
+			$this->data = array(
+				'discuss'=>$discuss,
+				'replies'=>$replies
+			);
+			$this->header();
+
+		}
 
 	}
 
@@ -24,7 +64,6 @@ class Mealdiscuss extends FDZ_Controller{
 
 			$this->form_validation->set_error_delimiters('<span class="err">', '</span>');
 			$this->view = "discuss_create";
-
 			$this->header();
 		}else{
 			$this->discussmodel->insert(array(

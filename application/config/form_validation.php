@@ -23,6 +23,13 @@ $config = array(
             'rules' => 'required|callback_valid_invitecode'
         )
     ),
+    'mealdiscuss/show' => array(
+        array(
+            'field' => 'content',
+            'label' => '内容',
+            'rules' => 'required'
+        )
+    ),
     'mealdiscuss/create' => array(
         array(
             'field' => 'title',

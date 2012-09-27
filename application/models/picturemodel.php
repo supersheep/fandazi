@@ -16,8 +16,12 @@ class Picturemodel extends FDZ_Model{
 	}
 
 	private function get_name($pic,$type){
+		$pic = (object)$pic;
 		if($pic->path == "avatars"){
 			$suffix = substr($type,0,1);
+			if(!isset($pic->name)){
+				return "/s/i/default_avatar.png";
+			}
 		}else{
 			$suffix = $type; 
 		}
