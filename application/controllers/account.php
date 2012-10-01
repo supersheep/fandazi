@@ -28,6 +28,8 @@ class Account extends FDZ_Controller{
 			$postdata = $this->input->post();
 			$this->usermodel->update($this->current_user->id,array(
 				"company" => $postdata["company"],
+				"gender" => $postdata["gender"],
+				"major" => $postdata["major"],
 				"duty" => $postdata["duty"],
 				"city" => $postdata["city"],
 				"bio" => $postdata["bio"],

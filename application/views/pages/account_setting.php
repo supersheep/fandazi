@@ -13,8 +13,14 @@
 		</div>
 	</div>
 	<form action="" method="post" id="info_form">
+	<div class="row clear"><label class="label">性别</label>
+		<input type="radio" name="gender" id="male" value="1" <? if($current_user->gender==1):?>checked<?endif;?>
+		<label for="male"> 男 </label>
+		<input type="radio" name="gender" id="female" value="0" <? if($current_user->gender==0):?>checked<?endif;?>
+		<label for="female"> 女 </label>
+	</div>
 	<div class="row clear"><label class="label" for="company">公司</label><input type="text" class="textfield" name="company" id="company" value="<?=$current_user->company;?>"></div>
-	<div class="row clear"><label class="label" for="">职位</label><input type="text" class="textfield" name="duty" id="duty" value="<?=$current_user->company;?>"></div>
+	<div class="row clear"><label class="label" for="duty">职位</label><input type="text" class="textfield" name="duty" id="duty" value="<?=$current_user->duty;?>"></div>
 	<div class="row clear"><label class="label" for="">城市</label><select name="city" id="city">
 		<? foreach($cities as $city):?>
 		<option value="<?=$city->id;?>" <? if($current_user->city==$city->id):?>selected<? endif;?>><?=$city->name;?></option>
@@ -22,6 +28,7 @@
 	</select></div>
 	<div class="row clear"><label class="label" for="bio">个人介绍</label><textarea name="bio" class="textfield" id="bio" cols="30" row clears="10"><?=$current_user->bio;?></textarea></div>
 	<div class="row clear"><label class="label" for="school">毕业学校</label><input type="text" class="textfield" name="school" id="school" value="<?=$current_user->school;?>"></div>
+	<div class="row clear"><label class="label" for="major">专业</label><input type="text" class="textfield" name="major" id="major" value="<?=$current_user->major;?>"></div>
 	<div class="row clear"><label class="label" for="graduation_year" value="<?=$current_user->graduation_year;?>">毕业年份</label>
 		<select name="graduation_year" id="graduation_year">
 			<? for($i = (int) date("Y");$i > 1976;$i--):?>

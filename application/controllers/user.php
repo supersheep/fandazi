@@ -12,7 +12,7 @@ class User extends FDZ_Controller{
 			$this->data = array(
 				"user" => $user
 			);
-			$this->view = "user";
+			$this->view = "user_show";
 			$this->header();
 		}else{
 
