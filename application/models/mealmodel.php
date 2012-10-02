@@ -18,6 +18,11 @@ class Mealmodel extends FDZ_Model{
 		return $query->result();
 	}
 
+	function get_user_last_attend($userid,$limit=5){
+		$query = $this->db->select("fdz_meal.*")->from($this->tablename)->join("fdz_participant","fdz_participant.meal_id = fdz_meal.id")->where(array("user_id"=>$userid))->get();
+		return $query->result();
+	}
+
 	function add_one_attender($id){
 		$this->db->set("attend_count","attend_count+1",FALSE);
 		$this->db->where(array("id"=>$id));
@@ -31,25 +36,40 @@ class Mealmodel extends FDZ_Model{
 		$this->db->update($this->tablename);
 	}
 
-
-	function get_full_info($meal){
-		$this->load->model(array("shopmodel","usermodel","picturemodel","participantmodel","mealmodel"));
+	function get_attenders($meal){
+		$this->load->model(array("usermodel","participantmodel"));
 
 		if(!is_null($meal)){
-			$shop = $this->shopmodel->get_by_id($meal->shop_id);
-
-			$meal->shop = $shop;
-
 			$participants = $this->participantmodel->get_all_by_meal_id($meal->id);
 			$attenders = array();
 			
-
 			foreach ($participants as $key => $participant) {
 				$user = $this->usermodel->get_by_id($participant->user_id);
 				if(count($user)){
 					$attenders[] = $user;
 				}
 			}
+
+			$meal->participants = $attenders;
+
+		}
+		return $meal;
+	}
+
+	function get_shop_info($meal){
+		$this->load->model("shopmodel");
+
+		if(!is_null($meal)){
+			$shop = $this->shopmodel->get_by_id($meal->shop_id);
+			$meal->shop = $shop;
+		}
+		return $meal;
+	}
+
+	function get_pic_info($meal){
+		$this->load->model("picturemodel");
+
+		if(!is_null($meal)){
 
 			$pic_id = $meal->pic;
 			if(!is_null($pic_id)){
@@ -62,8 +82,15 @@ class Mealmodel extends FDZ_Model{
 				$meal->pic_middle = "/s/i/default_meal_middle.png";
 				$meal->pic_small = "/s/i/default_meal_small.png";
 			}
-			$meal->participants = $attenders;
 		}
+		return $meal;
+	}
+
+	function get_full_info($meal){
+
+		$meal = $this->get_attenders($meal);
+		$meal = $this->get_shop_info($meal);
+		$meal = $this->get_pic_info($meal);
 
 		return $meal;
 	}
