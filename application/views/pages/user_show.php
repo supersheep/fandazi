@@ -1,21 +1,3 @@
-<style type="text/css">
-	.main{width:720px;}
-	.main .box{background-color: #fff;border:1px solid #ccc;border-radius: 5px;}
-	.card{margin-bottom:10px;padding:10px;}
-	.card .avatar{border:1px solid #ccc;border-radius: 5px;float:left;margin-right:10px;}
-	.card .avatar img{border-radius: 5px;}
-	.card .info{float:left;margin-left:0px;}
-	.card .info .title{padding:8px 15px;}
-	.card .info .title .name{font-size:18px;margin-right:8px;}
-	.card .info .detail .detail-group{margin-bottom:5px;}
-	.card .info .detail li{float:left;margin-left:15px;}
-	.recent_meals{}
-	.recent_meals .title{border-bottom:1px solid #ccc;padding:10px;}
-
-	.recent_meals .meal .pic{float:left;margin:10px;width:120px;}
-	.recent_meals .meal .title{border:none;padding:0}
-	.recent_meals .meal .info{margin-left:120px;}
-</style>
 <div id="bd">
 
 	<div class="main">

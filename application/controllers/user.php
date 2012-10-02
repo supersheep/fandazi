@@ -16,10 +16,11 @@ class User extends FDZ_Controller{
 			}
 
 			$this->data = array(
+				"css" => array("user_show"),
 				"recent_meals" => $recent_meals,
 				"user" => $user
 			);
-			
+
 			$this->view = "user_show";
 			$this->header();
 		}else{
