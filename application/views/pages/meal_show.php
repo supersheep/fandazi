@@ -37,13 +37,13 @@
 		<div class="meal-desc"><span class="key">活动介绍：</span><?=$meal->describe;?></div>
 		
 		<div class="discuss">
-			<div class="title">讨论<a href="/meal/<?=$meal->id;?>/discuss/create">发起话题</a></div>
+			<div class="title">讨论 <a href="/meal/<?=$meal->id;?>/discuss/create">发起话题</a></div>
 			<table class="content-list" width="100%">
 				<tr>
-					<td width="50%"></td>
-					<td width="20%"></td>
-					<td width="18%"></td>
-					<td width="12%"></td>
+					<td width="45%"></td>
+					<td width="25%"></td>
+					<td width="15%"></td>
+					<td width="15%"></td>
 				</tr>
 				<? foreach($discuss as $dis):?>
 				<tr>

@@ -86,13 +86,25 @@
 
 .meal-desc{
   padding:20px;
+  margin-bottom:20px;
   background-color: #fff;
 }
-
 
 .meal-desc .key{
   color:#4A86B4;
 }
+
+.discuss{
+  background-color: #fff;
+  padding:20px;
+}
+
+.discuss .content-list td{
+  padding:5px;
+  border-bottom:1px dashed #ccc;
+}
+
+
 
 .meal-dishes {
   background: #fff;
