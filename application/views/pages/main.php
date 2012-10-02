@@ -23,9 +23,9 @@
 			</div>
 		</div>
 
-		<div class="datings">
+		<div class="meals clear">
 			<? foreach($meals as $meal):?>
-			<div class="dating">
+			<div class="meal">
 				<div class="pic">
 					<a href="/meal/<?=$meal->id;?>">
 						<img src="<?=$meal->pic_small;?>" alt="">
