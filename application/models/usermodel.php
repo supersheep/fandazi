@@ -8,8 +8,9 @@ class Usermodel extends FDZ_Model{
 	var $cookie_name = 'fdzsession'; 
 
 
-	private function dealavatar(&$user){
+	private function fullinfo(&$user){
 		$this->load->model("picturemodel");
+		$this->load->model("citymodel");
 		if(!count($user)){
 			return;
 		}
@@ -24,6 +25,8 @@ class Usermodel extends FDZ_Model{
 			$user->avatar = $this->picturemodel->large_name($avatar);
 			$user->avatar_small = $this->picturemodel->small_name($avatar);
 		}
+		$city = $this->citymodel->get_by_id($user->city);
+		$user->cityname = $city->name;
 	}
 
 	/**
@@ -32,7 +35,7 @@ class Usermodel extends FDZ_Model{
 	function get_by_id($id){
 		$query = $this->db->select()->where(array("id"=>$id))->get($this->tablename);
 		$user = $query->row();
-		$this->dealavatar($user);
+		$this->fullinfo($user);
 
 		return $user;
 	}
@@ -40,7 +43,7 @@ class Usermodel extends FDZ_Model{
 	function get_by_email($email){
 		$query = $this->db->select()->from($this->tablename)->where('email',$email)->get();
 		$user = $query->row();
-		$this->dealavatar($user);
+		$this->fullinfo($user);
 		return $user;
 	}
 
