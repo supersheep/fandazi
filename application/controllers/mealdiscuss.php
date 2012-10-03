@@ -37,6 +37,7 @@ class Mealdiscuss extends FDZ_Controller{
 					"name"=>$reply->avatar,"path"=>"avatars"));
 			}
 			$this->data = array(
+				'css'=>array("discuss_show"),
 				'discuss'=>$discuss,
 				'replies'=>$replies
 			);
@@ -64,11 +65,14 @@ class Mealdiscuss extends FDZ_Controller{
 
 			$this->form_validation->set_error_delimiters('<span class="err">', '</span>');
 			$this->view = "discuss_create";
+			$this->data = array(
+				"css"=>array("discuss_create")
+			);
 			$this->header();
 		}else{
 			$this->discussmodel->insert(array(
 				"title" => $this->input->post("title"),
-				"content" => $this->input->post("title"),
+				"content" => $this->input->post("content"),
 				"user" => $this->current_user->id,
 				"create_time" => date("Y-m-d h:i:s"),
 				"reply_count" => 0

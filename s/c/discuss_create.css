@@ -1,0 +1,14 @@
+.titile{font-size: 18px;}
+.row label{
+	float:left;
+	width: 75px;
+	text-align: right;
+}
+.row .item{
+	margin-bottom: 20px;
+	margin-left: 110px;
+}
+.row .item .input-text{
+	width:350px;
+}
+.btn-submit{margin-left:425px;}

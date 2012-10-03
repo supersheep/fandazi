@@ -3,6 +3,9 @@ div,
 h1,
 h2,
 h3,
+h4,
+h5,
+h6,
 p,
 ul,
 ol,
@@ -14,6 +17,7 @@ legend {
   margin: 0;
   padding: 0;
   font-size: 14px;
+  color: #333;
   font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti;
 }
 ul,
@@ -30,6 +34,15 @@ body {
 }
 img {
   border: none;
+}
+h2{
+  font-size: 24px;
+}
+h3{
+  font-size: 20px;
+}
+h4{
+  font-size:16px;
 }
 .clear:after {
   content: '';
@@ -95,6 +108,12 @@ img {
 
 
 /* widgets */
+.well{
+  background-color: #fff;
+  padding: 20px;
+  border-radius:5px;
+}
+
 .btn{
   background-color: #39D;
   border-radius: 3px;
@@ -112,4 +131,14 @@ img {
   padding: 4px;
   cursor: pointer;
   text-align: center;
+}
+
+
+.input-text{
+  border-radius: 3px;
+  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid #CCC;
+  outline: none;
+  padding: 4px 6px;
+  line-height: 24px;
 }
