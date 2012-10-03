@@ -18,6 +18,37 @@ class Mealmodel extends FDZ_Model{
 		return $query->result();
 	}
 
+	function dealdate($date){
+		$now = date("Y-m-d");
+
+		$t1   =   strtotime($now); 
+		$t2   =   strtotime($date); 
+		$t=$t1-$t2; 
+
+		$t=$t*(-1); 
+		$day=$t/3600/24; 
+		
+		$over;
+		$date;
+
+		if($day< -3){
+			$date = date("Y-m-d",$t2);
+		}else if($day>=-3 && $day<-1){
+			$date = -$day."天前";
+		}else if($day==-1){
+			$date = "昨天";
+		}else if($day==0){
+			$date = "今天";
+		}else if($day==1){
+			$date = "明天";
+		}else if($day>1 && $day <= 3){
+			$date = $day."天后";
+		}else if($day>3){
+			$date =date("Y-m-d",$t2);
+		}
+		return array($day<0,$date);
+	}
+
 	function get_user_last_attend($userid,$limit=5){
 		$query = $this->db->select("fdz_meal.*")->from($this->tablename)->join("fdz_participant","fdz_participant.meal_id = fdz_meal.id")->where(array("user_id"=>$userid))->get();
 		return $query->result();
@@ -91,7 +122,9 @@ class Mealmodel extends FDZ_Model{
 		$meal = $this->get_attenders($meal);
 		$meal = $this->get_shop_info($meal);
 		$meal = $this->get_pic_info($meal);
-
+		$dealed  = $this->dealdate($meal->start);
+		$meal->human_date = $dealed[1];
+		$meal->over = $dealed[0];
 		return $meal;
 	}
 	

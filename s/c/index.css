@@ -31,44 +31,55 @@
 }
 
 #bd .main .meals {
-  padding: 20px 0;
+  padding: 20px;
   background: #f5f5f5;
 }
 #bd .main .meals .meal {
   float: left;
-  margin: 0 20px 30px 20px;
+  margin-bottom: 30px;
   background-color: #fff;
   border-radius: 5px;
-  width: 320px;
+  width: 345px;
   overflow: hidden;
   height: 120px;
   border-bottom: 1px solid #ccc;
 }
+
+#bd .main .meals .left{
+  margin-right:30px;
+}
+#bd .main .meals .meal .right{}
 #bd .main .meals .meal .pic {
   float: left;
-  width: 120px;
-  height: 200px;
+  width: 160px;
+  height: 120px;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(0,0,0,0.35);
 }
 #bd .main .meals .meal .pic img {
-  width: 120px;
+  height:120px;
   display: block;
 }
 #bd .main .meals .meal .info {
-  width: 180px;
-  margin: 0 10px 0 130px;
+  margin: 0 10px 0 170px;
   position: relative;
   padding: 5px 0;
 }
 #bd .main .meals .meal .info .title {
   font-size: 14px;
+  line-height: 20px;
   font-weight: 700;
+  margin-bottom: 5px;
+}
+
+#bd .main .meals .meal .info .title a{
+  color:#333;
 }
 #bd .main .meals .meal .info .info-row {
   font-size: 12px;
 }
 #bd .main .meals .meal .participants {
+  margin-top: 10px;
 }
 #bd .participants .user {
   float: left;

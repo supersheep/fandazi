@@ -24,17 +24,21 @@
 		</div>
 
 		<div class="meals clear">
-			<? foreach($meals as $meal):?>
-			<div class="meal">
+			<? foreach($meals as $i=>$meal):?>
+			<div class="meal <?if($i%2):?>right<?else:?>left<?endif;?>">
 				<div class="pic">
 					<a href="/meal/<?=$meal->id;?>">
-						<img src="<?=$meal->pic_small;?>" alt="">
+						<img src="<?=$meal->pic_small;?>" alt="<?=$meal->title;?>">
 					</a>
 				</div>
 				<div class="info">
-					<div class="title"><?=$meal->title;?></div>
+					<div class="title"><a href="/meal/<?=$meal->id;?>"><?=$meal->title;?></a></div>
 					<div class="info-row">餐馆：<?=$meal->shop->name;?></div>
-					<div class="info-row">聚会将于<?=$meal->start;?>举行</div>
+					<div class="info-row">聚会<? 
+						if(!$meal->over):
+					?>将于<?=$meal->human_date;?>举行<?else:
+					?>已于<?=$meal->human_date;?>结束<?endif
+					;?></div>
 					<div class="participants clear">
 						<? foreach($meal->participants as $user): ?>
 							<div class="user"> <img src="<?=$user->avatar;?>" alt="<?=$user->name;?>" class="avatar"> </div>
