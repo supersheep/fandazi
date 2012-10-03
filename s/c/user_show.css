@@ -9,9 +9,9 @@
 .card .info .detail .detail-group{margin-bottom:5px;}
 .card .info .detail li{float:left;margin-left:15px;}
 .recent_meals{}
-.recent_meals .title{padding:10px;background-color: #A0C0DC;color: #fff;}
+.recent_meals .title{padding:10px;border-bottom: 1px solid #ccc;}
 
-.recent_meals .meal{border-bottom: 1px dashed #ccc;padding:10px;}
+.recent_meals .meal{border-bottom: 1px dotted #ccc;padding:15px 0;margin: 0 15px;}
 .recent_meals .last{border-bottom:none;}
 .recent_meals .meal .pic{float:left;width:120px;height:80px;border:1px solid #ccc;overflow: hidden;}
 .recent_meals .meal .pic img{width:120px;}
