@@ -42,6 +42,7 @@ $route['default_controller'] = "main";
 $route['404_override'] = '';
 
 
+$route['meal/(:num)/discuss/create'] = "mealdiscuss/create/$1";
 $route['meal/(:num)/discuss/(:num)'] = "mealdiscuss/show/$1/$2";
 
 $route['meal/(:num)'] = "meal/show/$1";
