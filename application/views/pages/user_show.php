@@ -26,15 +26,15 @@
 		</div>
 		<div class="recent_meals box">
 			<div class="title">最近参加的聚餐</div>
-			<? foreach($recent_meals as $meal):?>
-			<div class="meal clear">
+			<? foreach($recent_meals as $k=>$meal):?>
+			<div class="meal clear <?if($k==count($recent_meals)-1):?>last<?endif;?>">
 				<div class="pic">
 					<a href="/meal/<?=$meal->id;?>">
 						<img src="<?=$meal->pic_small;?>" alt="">
 					</a>
 				</div>
 				<div class="info">
-					<div class="title"><?=$meal->title;?></div>
+					<div class="title"><a href="/meal/<?=$meal->id;?>"><?=$meal->title;?></a></div>
 					<div class="info-row">餐馆：<?=$meal->shop->name;?></div>
 					<div class="info-row"><?=$meal->start;?></div>
 				</div>

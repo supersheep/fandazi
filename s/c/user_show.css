@@ -9,8 +9,11 @@
 .card .info .detail .detail-group{margin-bottom:5px;}
 .card .info .detail li{float:left;margin-left:15px;}
 .recent_meals{}
-.recent_meals .title{border-bottom:1px solid #ccc;padding:10px;}
+.recent_meals .title{padding:10px;background-color: #A0C0DC;color: #fff;}
 
-.recent_meals .meal .pic{float:left;margin:10px;width:120px;}
-.recent_meals .meal .title{border:none;padding:0}
-.recent_meals .meal .info{margin-left:120px;}
+.recent_meals .meal{border-bottom: 1px dashed #ccc;padding:10px;}
+.recent_meals .last{border-bottom:none;}
+.recent_meals .meal .pic{float:left;width:120px;height:80px;border:1px solid #ccc;overflow: hidden;}
+.recent_meals .meal .pic img{width:120px;}
+.recent_meals .meal .info{margin-left:135px;}
+.recent_meals .meal .title{border:none;padding:7px 0;color:#333;font-size:18px;line-height:18px;background-color: #fff;}
