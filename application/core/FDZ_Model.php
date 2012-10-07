@@ -23,6 +23,11 @@ class FDZ_Model extends CI_Model{
 		return $query->result();
 	}
 
+	public function get_all_by_data($data){
+		$query = $this->db->select()->where($data)->get($this->tablename);
+		return $query->result();
+	}
+
 	public function delete_by_data($data){
 		$this->db->where($data)->delete($this->tablename);
 	}

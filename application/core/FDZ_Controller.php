@@ -9,6 +9,12 @@ class FDZ_Controller extends CI_Controller{
 		$logged = $this->logged = $this->usermodel->logged();
 		if($logged){
 			$this->current_user = $this->usermodel->current();
+			$this->load->model(array("noticemodel","mailmodel"));
+			$notices = $this->noticemodel->get_all_by_data(array(
+				"to_user_id"=>$this->current_user->id));
+			$mails = $this->mailmodel->get_all_by_data(array(
+				"to_user_id"=>$this->current_user->id));
+			$this->msgcount = count($notices) + count($mails);
 		}else{
 			$this->current_user = null;
 		}
@@ -58,6 +64,7 @@ class FDZ_Controller extends CI_Controller{
 		
 		$this->data["current_user"] = $this->current_user;
 		$this->data["logged"] = $this->logged;
+		$this->data["msgcount"] = $this->msgcount;
 
 		$this->load->view("frag/header",$this->data);
 		$this->load->view("pages/".$this->view,$this->data);
