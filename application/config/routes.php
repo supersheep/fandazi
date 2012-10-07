@@ -51,7 +51,10 @@ $route['meal/(:num)/upload_poster'] = "meal/upload_poster/$1";
 $route['user/(:num)'] = "user/show/$1";
 
 
-$route['msg/mail/new'] = "msg/new_mail"; 
+$route['msg/mail'] = "msg/mail_inbox"; 
+$route['msg/mail/outbox'] = "msg/mail_outbox"; 
+$route['msg/mail/(:num)'] = "msg/mail_show/$1";
+$route['msg/mail/new'] = "msg/mail_new"; 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

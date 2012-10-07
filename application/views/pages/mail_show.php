@@ -1,12 +1,15 @@
 <div id="bd">
 	<div class="main clear">
-		<ul class="aside">
-			<li>私信</li>
-			<li>提醒</li>
-		</ul>
 		<div class="tab-body">
-			<div class="row"><labe class="label" for="title">To:</labe><input class="input-text" type="text" id="title" name="title" /></div>
-			<div class="row"><textarea name="content" id="content" class="input-text" cols="30" rows="7"></textarea></div>
+			<div class="row">来自:<a href="/user/<?=$mail->user_id;?>"><?=$mail->user_name?></a></div>
+			<div class="row">时间:<?=$mail->create_time?></div>
+			<div class="row mail_detail_title">标题:<?=$mail->title;?></div>
+			<div class="row">
+				<?=$mail->content;?>
+			</div>
+			<div class="row">
+			<a href="/mail/new/?reply=<?=$mail->id;?>" class="btn">回复</a>
+			</div>
 		</div>
 	</div>
 </div>

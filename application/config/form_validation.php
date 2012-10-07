@@ -42,6 +42,23 @@ $config = array(
             'rules' => 'required'
         )
     ),
+    'msg/new_mail' => array(
+        array(
+            'field' => 'title',
+            'label' => '标题',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'content',
+            'label' => '内容',
+            'rules' => 'required'
+        ),
+        array(
+            'field' => 'to_user_id',
+            'label' => '收件人',
+            'rules' => 'required'
+        )
+    ),
 	'meal/create' => array(
 		array(
         	'field' => 'title',

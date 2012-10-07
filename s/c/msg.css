@@ -1,8 +1,10 @@
 .main{border-right:1px solid #ccc;background-color: #fff;}
 .aside{float:left;width:200px;}
 .aside li{padding:20px;}
-.tab-body{float:left;padding:20px;}
+.tab-body{margin-left:200px;padding:20px;}
+.tab-body .mail_detail_title{border-bottom: 1px dashed #ccc;}
+.tab-body th{text-align: left;}
 .tab-body .label{margin-right:10px;}
 .tab-body .row{margin-bottom: 15px;}
-.tab-body .input-text{width:470px;}
+.tab-body .input-text{width:500px;}
 .tab-body #content{width:500px;}
