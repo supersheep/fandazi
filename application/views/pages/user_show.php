@@ -2,7 +2,13 @@
 
 	<div class="main">
 		<div class="card box clear">
-			<div class="avatar"><img src="<?=$user->avatar;?>" alt=""></div>
+			<div class="avatar">
+				<img src="<?=$user->avatar;?>" alt="">
+				<div class="func">
+					<a id="J_follow" href="#">关注TA</a>
+					<a id="J_mail" href="#">写私信</a>
+				</div>
+			</div>
 			<div class="info">
 				<div class="title"><span class="name"><?=$user->name;?></span><? if($user->id == $current_user->id): ?><a href="/account/setting">编辑个人资料</a><? endif;?></div>
 				<div class="detail">

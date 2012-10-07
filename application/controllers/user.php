@@ -18,6 +18,10 @@ class User extends FDZ_Controller{
 			$this->data = array(
 				"css" => array("user_show"),
 				"recent_meals" => $recent_meals,
+				"jsmain" => "user_show",
+				"jsdata" => array(
+					"userid"=>$user->id
+				),
 				"user" => $user
 			);
 

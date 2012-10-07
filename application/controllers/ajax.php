@@ -69,6 +69,27 @@ class Ajax extends FDZ_Controller{
 		}
 	}
 
+	public function follow(){
+		if(!$this->logged){
+			$this->forbidden();
+		}else{
+			$this->load->model("usermodel");
+			$from = $this->input->get("userid");
+			if(!count($this->usermodel->get_by_id($from))){
+				$this->error("该用户不存在");
+			}else{
+				$to = $this->current_user->id;
+				$data = array(
+					"from" => $from,
+					"to" => $to
+				);
+				$this->load->model("followmodel");
+				$this->followmodel->insert($data);
+				$this->success();
+			}
+		}
+	}
+
 	private function forbidden(){
 		echo json_encode(array(
 			'code'=>403,
@@ -77,18 +98,21 @@ class Ajax extends FDZ_Controller{
 	}
 	
 	function error($msg){
-	
-		echo json_encode(array(
-			'code'=>500,
-			'msg'=>$msg
-		));
+		$ret = array();
+		$ret["code"] = 500;
+		if(isset($msg)){
+			$ret["msg"] = $msg;
+		}
+		echo json_encode($ret);
 	}
 	
-	function success($result){
-		echo json_encode(array(
-			'code'=>200,
-			'msg'=>$result
-		));
+	function success($msg){
+		$ret = array();
+		$ret["code"] = 200;
+		if(isset($msg)){
+			$ret["msg"] = $msg;
+		}
+		echo json_encode($ret);
 	}
 
 }
