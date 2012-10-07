@@ -136,18 +136,19 @@ class Ajax extends FDZ_Controller{
 				"to_user_id" => $to_user_id
 			);
 
-			$content = '<a href="/user/'.$from_user_id.'" >'.$this->current_user->name."</a>刚刚关注了你";
+			$content = $this->current_user->name."刚刚关注了你";
 
 			$notice_data = array(
 				"from_user_id" => 0,
 				"to_user_id" => $to_user_id,
+				"ref_url" => "/user/".$from_user_id,
 				"content" => $content
 			);
 
 			$this->load->model("noticemodel");
 			
 			$this->followmodel->insert($follow_data);
-			if(!count($this->noticemodel->get_by_content_and_user($content,$to_user_id))){
+			if(!count($this->noticemodel->get_one_by_data($notice_data)){
 				$this->noticemodel->insert($notice_data);
 			}
 			$this->success();

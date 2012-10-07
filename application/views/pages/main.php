@@ -41,7 +41,7 @@
 					;?></div>
 					<div class="participants clear">
 						<? foreach($meal->participants as $user): ?>
-							<div class="user"> <img src="<?=$user->avatar;?>" alt="<?=$user->name;?>" class="avatar"> </div>
+							<div class="user"><a href="/user/<?=$user->id;?>"><img src="<?=$user->avatar;?>" alt="<?=$user->name;?>" class="avatar"></a></div>
 						<? endforeach;?>
 					</div>
 				</div>
