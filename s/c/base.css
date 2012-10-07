@@ -64,6 +64,16 @@ h4{
   width: 960px;
   margin: 0 auto;
 }
+#hd .msg small{
+  background-color:#689FBF;
+  color:#fff;
+  padding:2px 3px;
+  border-radius: 3px;
+  margin-left: 3px;
+  font-size: 9px;
+  position: relative;
+  top: -5px;
+}
 #hd .logo {
   float: left;
 }

@@ -24,6 +24,7 @@
 	<? else:?>
 	<ul class="nav-sub">
 		<li><a href="/user/<?=$current_user->id;?>"><?=$current_user->name;?></a></li>
+		<li><a class="msg" href="/msg/mail">消息<?if(isset($msgcount)&&$msgcount!=0):?><small><?$msgcount?></small><?endif;?></a></li>
 		<li><a href="/logout">退出</a></li>
 	</ul>
 	<? endif;?>

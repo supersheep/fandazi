@@ -47,7 +47,11 @@ $route['meal/(:num)/discuss/(:num)'] = "mealdiscuss/show/$1/$2";
 
 $route['meal/(:num)'] = "meal/show/$1";
 $route['meal/(:num)/upload_poster'] = "meal/upload_poster/$1";
+
 $route['user/(:num)'] = "user/show/$1";
+
+
+$route['msg/mail/new'] = "msg/new_mail"; 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
