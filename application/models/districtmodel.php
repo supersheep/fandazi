@@ -1,6 +1,6 @@
 <?php
 
-class districtmodel extends FDZ_Model{
+class Districtmodel extends FDZ_Model{
 
 	var $tablename = "fdz_district";
 	function get_by_name($name){
