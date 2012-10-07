@@ -69,6 +69,42 @@ class Ajax extends FDZ_Controller{
 		}
 	}
 
+	public function unfollow(){
+		if(!$this->logged){
+			$this->forbidden();
+		}else{
+			$this->load->model("usermodel");
+			$from_user_id = $this->current_user->id;
+			$to_user_id = $this->input->get("userid");
+			$to_user = $this->usermodel->get_by_id($to_user_id);
+			if(!count($to_user)){
+				$this->error("该用户不存在");
+				return;
+			}
+
+			if($to_user_id == $from_user_id){
+				$this->error("不能对自己进行操作");
+				return;
+			}
+			
+			$this->load->model("followmodel");
+
+			if(!count($this->followmodel->get_one_by_pair($from_user_id,$to_user_id))){
+				$this->error("未关注");
+				return;
+			}
+
+			$follow_data = array(
+				"from_user_id" => $from_user_id,
+				"to_user_id" => $to_user_id
+			);
+
+			
+			$this->followmodel->delete_by_data($follow_data);
+			$this->success();
+		}
+	}
+
 	public function follow(){
 		if(!$this->logged){
 			$this->forbidden();
@@ -77,7 +113,7 @@ class Ajax extends FDZ_Controller{
 			$from_user_id = $this->current_user->id;
 			$to_user_id = $this->input->get("userid");
 			$to_user = $this->usermodel->get_by_id($to_user_id);
-			if(is_null($to_user)){
+			if(!count($to_user)){
 				$this->error("该用户不存在");
 				return;
 			}
@@ -86,15 +122,17 @@ class Ajax extends FDZ_Controller{
 				$this->error("不能关注自己");
 				return;
 			}
-			
-			if(is_null($this->followmodel->get_one_by_pair())){
+
+			$this->load->model("followmodel");
+
+			if(count($this->followmodel->get_one_by_pair($from_user_id,$to_user_id))){
 				$this->error("已关注");
 				return;
 			}
 
 			$follow_data = array(
-				"from" => $from_user_id,
-				"to" => $to_user_id
+				"from_user_id" => $from_user_id,
+				"to_user_id" => $to_user_id
 			);
 
 			$notice_data = array(
@@ -102,8 +140,7 @@ class Ajax extends FDZ_Controller{
 				"to_user_id" => $to_user_id,
 				"content" => '<a href="/user/'.$from_user_id.'" >'.$this->current_user->name."</a>刚刚关注了你"
 			);
-			
-			$this->load->model("followmodel");
+
 			$this->load->model("noticemodel");
 			
 			$this->followmodel->insert($follow_data);	
@@ -119,19 +156,19 @@ class Ajax extends FDZ_Controller{
 		));
 	}
 	
-	function error($msg){
+	function error($msg=null){
 		$ret = array();
 		$ret["code"] = 500;
-		if(isset($msg)){
+		if(!is_null($msg)){
 			$ret["msg"] = $msg;
 		}
 		echo json_encode($ret);
 	}
 	
-	function success($msg){
+	function success($msg=null){
 		$ret = array();
 		$ret["code"] = 200;
-		if(isset($msg)){
+		if(!is_null($msg)){
 			$ret["msg"] = $msg;
 		}
 		echo json_encode($ret);

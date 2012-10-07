@@ -16,7 +16,9 @@ class User extends FDZ_Controller{
 			}
 
 			$this->load->model("followmodel");
-			$followed = $this->logged && !is_null($this->followmodel->get_one_by_pair($this->current_user->id,$user->id));
+			$pair = $this->followmodel->get_one_by_pair($this->current_user->id,$user->id);
+
+			$followed = $this->logged && count($pair);
 
 			$this->data = array(
 				"css" => array("user_show"),

@@ -15,4 +15,21 @@ define(function(require) {
 		});
 		return false;
 	});
+
+	$("#J_unfollow").click(function(){
+		var data = $(window).data();
+		$.ajax({
+			url:"/ajax/unfollow/",
+			dataType:"json",
+			data:{userid:data.userid},
+			success:function(json){
+				if(json.code == 200){
+					location.reload();
+				}else{
+					alert(json.msg);
+				}
+			}
+		});
+		return false;
+	});
 });
