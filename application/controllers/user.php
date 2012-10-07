@@ -15,10 +15,14 @@ class User extends FDZ_Controller{
 				$meal = $this->mealmodel->get_shop_info($meal);
 			}
 
+			$this->load->model("followmodel");
+			$followed = $this->logged && !is_null($this->followmodel->get_one_by_pair($this->current_user->id,$user->id));
+
 			$this->data = array(
 				"css" => array("user_show"),
 				"recent_meals" => $recent_meals,
 				"jsmain" => "user_show",
+				"followed" => $followed,
 				"jsdata" => array(
 					"userid"=>$user->id
 				),

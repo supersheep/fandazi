@@ -2,7 +2,7 @@
 
 class Mailmodel extends FDZ_Model{
 
-	var $tablename = "fdz_token";
+	var $tablename = "fdz_mail";
 
 	function send_email($userid,$message){
 		$this->load->model("usermodel");

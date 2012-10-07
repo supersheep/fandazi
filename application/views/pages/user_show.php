@@ -4,13 +4,20 @@
 		<div class="card box clear">
 			<div class="avatar">
 				<img src="<?=$user->avatar;?>" alt="">
+				<? if(!$logged || $current_user->id!=$user->id):?>
 				<div class="func">
+					<? if(!$followed):?>
 					<a id="J_follow" href="#">关注TA</a>
-					<a id="J_mail" href="#">写私信</a>
+					<? else:?>
+					<a href="" id="J_unfollow">取消关注</a>
+					<? endif;?>
+					<a id="J_mail" href="/msg/mail/new?to=<?=$user->id;?>">写私信</a>
 				</div>
+				<? endif;?>
 			</div>
 			<div class="info">
-				<div class="title"><span class="name"><?=$user->name;?></span><? if($user->id == $current_user->id): ?><a href="/account/setting">编辑个人资料</a><? endif;?></div>
+				<div class="title"><span class="name"><?=$user->name;?></span>
+					<? if($current_user && $user->id == $current_user->id): ?><a href="/account/setting">编辑个人资料</a><? endif;?></div>
 				<div class="detail">
 					<ul class="basic detail-group clear">
 						<li><?=$user->gender==1?"男":"女";?></li>

@@ -74,19 +74,41 @@ class Ajax extends FDZ_Controller{
 			$this->forbidden();
 		}else{
 			$this->load->model("usermodel");
-			$from = $this->input->get("userid");
-			if(!count($this->usermodel->get_by_id($from))){
+			$from_user_id = $this->current_user->id;
+			$to_user_id = $this->input->get("userid");
+			$to_user = $this->usermodel->get_by_id($to_user_id);
+			if(is_null($to_user)){
 				$this->error("该用户不存在");
-			}else{
-				$to = $this->current_user->id;
-				$data = array(
-					"from" => $from,
-					"to" => $to
-				);
-				$this->load->model("followmodel");
-				$this->followmodel->insert($data);
-				$this->success();
+				return;
 			}
+
+			if($to_user_id == $from_user_id){
+				$this->error("不能关注自己");
+				return;
+			}
+			
+			if(is_null($this->followmodel->get_one_by_pair())){
+				$this->error("已关注");
+				return;
+			}
+
+			$follow_data = array(
+				"from" => $from_user_id,
+				"to" => $to_user_id
+			);
+
+			$notice_data = array(
+				"from_user_id" => 0,
+				"to_user_id" => $to_user_id,
+				"content" => '<a href="/user/'.$from_user_id.'" >'.$this->current_user->name."</a>刚刚关注了你"
+			);
+			
+			$this->load->model("followmodel");
+			$this->load->model("noticemodel");
+			
+			$this->followmodel->insert($follow_data);	
+			$this->noticemodel->insert($notice_data);
+			$this->success();
 		}
 	}
 
