@@ -11,9 +11,11 @@ class FDZ_Controller extends CI_Controller{
 			$this->current_user = $this->usermodel->current();
 			$this->load->model(array("noticemodel","mailmodel"));
 			$notices = $this->noticemodel->get_all_by_data(array(
-				"to_user_id"=>$this->current_user->id));
+				"to_user_id"=>$this->current_user->id,
+				"status"=>0));
 			$mails = $this->mailmodel->get_all_by_data(array(
-				"to_user_id"=>$this->current_user->id));
+				"to_user_id"=>$this->current_user->id,
+				"status"=>0));
 			$this->msgcount = count($notices) + count($mails);
 		}else{
 			$this->current_user = null;

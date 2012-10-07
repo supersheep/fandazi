@@ -96,7 +96,8 @@ class Ajax extends FDZ_Controller{
 
 			$follow_data = array(
 				"from_user_id" => $from_user_id,
-				"to_user_id" => $to_user_id
+				"to_user_id" => $to_user_id,
+				"status" => 0
 			);
 
 			
