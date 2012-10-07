@@ -4,7 +4,7 @@
 class Reg extends FDZ_Controller {
 
 	public function index(){
-		$this->load->model(array("citymodel","usermodel","messagemodel","tokenmodel"));
+		$this->load->model(array("citymodel","usermodel","mailmodel","tokenmodel"));
 		
 
 
@@ -46,7 +46,7 @@ class Reg extends FDZ_Controller {
 				"status" => 0
 			));
 
-			$this->messagemodel->sendmail($this->db->insert_id(),$message);
+			$this->mailmodel->send_email($this->db->insert_id(),$message);
 			$this->view = "reg_success";
 			$this->simpleheader();
 		}

@@ -1,10 +1,10 @@
 <?php
 
-class Messagemodel extends FDZ_Model{
+class Mailmodel extends FDZ_Model{
 
 	var $tablename = "fdz_token";
 
-	function sendmail($userid,$message){
+	function send_email($userid,$message){
 		$this->load->model("usermodel");
 		$this->load->library('email');
 
@@ -16,6 +16,5 @@ class Messagemodel extends FDZ_Model{
 		$this->email->message($message);
 		$this->email->send();
 	}
-
 }
 	
