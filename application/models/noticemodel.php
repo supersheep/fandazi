@@ -12,4 +12,5 @@ class Noticemodel extends FDZ_Model{
 
 		return $query->row();
 	}
+
 }

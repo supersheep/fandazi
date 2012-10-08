@@ -1,9 +1,11 @@
 .main{border-right:1px solid #ccc;background-color: #fff;}
-.aside{float:left;width:200px;}
-.aside li{padding:20px;}
+.aside{float:left;width:200px;border-right: 1px dashed #ccc;}
+.aside li a{padding:20px;display: block;}
+.aside li a:hover{background-color: #EDF2F7;}
 .tab-body{margin-left:200px;padding:20px;}
 .tab-body .mail_detail_title{border-bottom: 1px dashed #ccc;}
 .tab-body th{text-align: left;}
+.tab-body .notice{padding:5px;background-color:#EDF2F7;border-radius: 5px; }
 .tab-body .label{margin-right:10px;}
 .tab-body .row{margin-bottom: 15px;}
 .tab-body .input-text{width:500px;}

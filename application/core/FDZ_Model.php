@@ -40,5 +40,9 @@ class FDZ_Model extends CI_Model{
 	public function update($id,$data){
 		$this->db->where(array("id"=>$id))->update($this->tablename,$data);
 	}
+
+	public function update_by_data($where,$data){
+		$this->db->where($where)->update($this->tablename,$data);
+	}
 }
 

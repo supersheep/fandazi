@@ -14,6 +14,7 @@ class Msg extends FDZ_Controller{
 		));
 
 		$this->data["css"] = array("msg");
+		$this->data["jsmain"] = "notice";
 		$this->data["notices"] = $notices;
 		$this->view = "notice_show";
 		$this->header();
@@ -73,7 +74,7 @@ class Msg extends FDZ_Controller{
 		$this->load->library('form_validation');
 
 
-		if($this->form_validation->run("msg/mail_new")){
+		if($this->form_validation->run("msg/new_mail")){
 			$this->load->model("mailmodel");
 			$this->mailmodel->insert(array(
 				"from_user_id" => $this->current_user->id,
@@ -85,15 +86,37 @@ class Msg extends FDZ_Controller{
 			));
 			redirect("/msg/mail/outbox");
 		}else{
-			$to_user_id = $this->input->get("to");
+			$to = $this->input->get("to");
+			$reply_mail_id = $this->input->get("reply");
+
+			if($to){
+				$to_user_id = $to;
+				$title = "";
+				$content = "";
+			}else if($reply_mail_id){
+				$this->load->model("mailmodel");
+				$mail = $this->mailmodel->get_one_by_data(array(
+					"id" => $reply_mail_id
+				));
+				if(!count($mail)){
+					redirect("/msg/mail");
+				}else{
+					$to_user_id = $mail->to_user_id;
+					$title = "回复：".$mail->title;
+					$content = "\n\n\n---------------------------\n".$mail->content;
+				}
+			}
+
 			$to_user = $this->usermodel->get_by_id($to_user_id);
 
 			if(!count($to_user)){
-				redirect("/msg/mail");
+				// redirect("/msg/mail");
 			}
 
 			$this->data["css"] = array("msg");
 		 	$this->data["user"] = $to_user;
+		 	$this->data["title"] = $title;
+		 	$this->data["content"] = $content;
 			$this->load->library('form_validation');
 			$this->load->helper("url");
 			$this->view = "mail_new";

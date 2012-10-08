@@ -1,8 +1,9 @@
 <div id="bd">
 	<div class="main clear">
 		<ul class="aside">
-			<li>私信</li>
-			<li>提醒</li>
+			<li><a href="/msg/mail">收件箱</a></li>
+			<li><a href="/msg/mail/outbox">发件箱</a></li>
+			<li><a href="/msg/notice">提醒</a></li>
 		</ul>
 		<div class="tab-body">
 			<div class="title"><?=$this->current_user->name;?>的<?if($box=="out"):

@@ -12,6 +12,29 @@ class Ajax extends FDZ_Controller{
 		}
 	}
 
+	public function notice($type){
+		if($type === "read"){
+			$this->notice_read();
+		}else{
+			$this->error("action not found");
+		}
+	}
+
+	public function notice_read(){
+		if(!$this->logged){
+			$this->forbidden();
+		}else{
+			$notice_id = $this->input->get("id");
+			$this->load->model("noticemodel");
+			$this->noticemodel->update_by_data(array(
+				"id" => $notice_id,
+				"to_user_id" => $this->current_user->id
+			),array(
+				"status" => 1
+			));
+		}
+	}
+
 	public function meal_attend(){
 		if(!$this->logged){
 			$this->forbidden();
@@ -139,7 +162,6 @@ class Ajax extends FDZ_Controller{
 			$content = $this->current_user->name."刚刚关注了你";
 
 			$notice_data = array(
-				"from_user_id" => 0,
 				"to_user_id" => $to_user_id,
 				"ref_url" => "/user/".$from_user_id,
 				"content" => $content
@@ -148,7 +170,7 @@ class Ajax extends FDZ_Controller{
 			$this->load->model("noticemodel");
 			
 			$this->followmodel->insert($follow_data);
-			if(!count($this->noticemodel->get_one_by_data($notice_data)){
+			if(!count($this->noticemodel->get_one_by_data($notice_data))){
 				$this->noticemodel->insert($notice_data);
 			}
 			$this->success();
