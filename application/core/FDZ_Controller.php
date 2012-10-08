@@ -18,6 +18,7 @@ class FDZ_Controller extends CI_Controller{
 				"status"=>0));
 			$this->msgcount = count($notices) + count($mails);
 		}else{
+			$this->msgcount = null;
 			$this->current_user = null;
 		}
 	}
