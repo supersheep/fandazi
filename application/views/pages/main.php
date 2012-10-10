@@ -79,9 +79,9 @@
 		<div class="box">
 		<div class="head">热门饭搭子</div>
 		<div class="body">
-			<? foreach($hotuser as $user): ?>
+			<? foreach($hotuser as $i=>$user): ?>
 			<? if(count($user)):?>
-				<div class="user clear">
+				<div class="user clear <?=$i==count($hotuser)-1?"last":"" ?>">
 					<img class="avatar" src="<?=$user->avatar_small;?>">
 					<a class="name" href="/user/<?=$user->id;?>"><?=$user->name?></a>
 					<p class="company"><?=$user->company;?></p>

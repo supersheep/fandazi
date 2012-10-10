@@ -11,6 +11,10 @@ class Shopmodel extends FDZ_Model {
         return $query->row();
     }
 
+    function get_hotests(){
+        
+    }
+
     function get_by_id($id){
         $this->load->model(array("citymodel","districtmodel"));
         $query = $this->db->select()->where(array("id"=>$id))->get($this->tablename);

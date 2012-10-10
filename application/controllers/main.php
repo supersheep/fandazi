@@ -12,15 +12,17 @@ class Main extends FDZ_Controller{
 		$cateid = $this->input->get("cate");
 		$tasteid = $this->input->get("taste");
 
-
+		// 取出所有分类
 		if($cateid && $cateid !=="all"){
 			$where["cate"] = $cateid;
 		}
 
+		// 取出所有口味
 		if($tasteid && $tasteid !== "all"){
 			$where["taste"] = $tasteid;
 		}
 
+		// 取出符合条件的最近的十次聚餐
 		$meals = $this->mealmodel->get_last($where,10);
 
 		$meals_full_info = array();
@@ -29,11 +31,17 @@ class Main extends FDZ_Controller{
 			$meals_full_info[] = $this->mealmodel->get_full_info($meal);
 		}
 
-		$hotuser = array();
-		$hotmeal = $this->mealmodel->get_last(array(),5,0,"attend_count");
-		$hotshop = array();
-		$lastmeal = array();
+		// 取出热门用户，以关注数倒序排列
+		$hotuser = $this->usermodel->get_hotests(5);
 
+		// 取出热门聚餐
+		$hotmeal = $this->mealmodel->get_last(array(),5,0,"attend_count");
+
+		// 取出所有中的最近的五次聚餐
+		$lastmeal = $this->mealmodel->get_last(array(),5);
+
+		// 取出热门用户，以聚餐数倒序排列
+		$hotshop = array();//$this->shopmodel->get_hotests(5);
 
 		$this->data = array(
 			"css"=>array("index"),

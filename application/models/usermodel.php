@@ -25,8 +25,21 @@ class Usermodel extends FDZ_Model{
 			$user->avatar = $this->picturemodel->large_name($avatar);
 			$user->avatar_small = $this->picturemodel->small_name($avatar);
 		}
-		$city = $this->citymodel->get_by_id($user->city);
-		$user->cityname = $city->name;
+		if(isset($user->city)){
+			$city = $this->citymodel->get_by_id($user->city);
+			$user->cityname = $city->name;
+		}
+	}
+
+// select fdz_user.id,fdz_user.name,count(fdz_follow.`from_user_id`) as followers from fdz_user join fdz_follow on fdz_follow.to_user_id =fdz_user.id group by fdz_follow.to_user_id order by followers desc
+	function get_hotests($count){
+		$query = $this->db->select("fdz_user.*,count(fdz_follow.from_user_id) as followers")->from($this->tablename)->join("fdz_follow","fdz_follow.to_user_id=fdz_user.id")->group_by("fdz_follow.to_user_id")->order_by("followers","desc")->get();
+
+		$rows = $query->result();
+		foreach($rows as $row){
+			$this->fullinfo($row);
+		}
+		return $rows;
 	}
 
 	/**
