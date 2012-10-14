@@ -129,11 +129,6 @@
   border-bottom: 1px dashed #ccc;
 }
 
-#bd .aside .box .last{
-  margin-bottom: 0;
-  border-bottom: none;
-}
-
 #bd .aside .box .user .avatar{
   float:left;
   width:50px;
@@ -146,6 +141,28 @@
 #bd .aside .box .user .duty{
   margin-left:75px;
   display: block;
+}
+
+#bd .aside .box .lastmeal{
+  padding: 5px;
+  border-bottom: 1px dashed #ccc;
+}
+
+#bd .aside .box .lastmeal .title{
+  font-size: 16px;
+  line-height: 18px;
+  margin-bottom: 10px;
+}
+
+#bd .aside .box .lastmeal .start-date{
+  display: block;
+  text-align: right;
+  color: #aaa;
+}
+
+#bd .aside .box .last{
+  margin-bottom: 0;
+  border-bottom: none;
 }
 
 #bd .aside .head {

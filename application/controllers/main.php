@@ -35,10 +35,18 @@ class Main extends FDZ_Controller{
 		$hotuser = $this->usermodel->get_hotests(5);
 
 		// 取出热门聚餐
-		$hotmeal = $this->mealmodel->get_last(array(),5,0,"attend_count");
+		$hotmeal = $this->mealmodel->get_last(array(),5,0,"start");
+		foreach ($hotmeal as $meal) {
+			$meal->date = $this->mealmodel->dealdate($meal->start);
+			$meal->date = $meal->date[1];
+		}
 
 		// 取出所有中的最近的五次聚餐
-		$lastmeal = $this->mealmodel->get_last(array(),5);
+		$lastmeal = $this->mealmodel->get_last(array(),5,0,"start");
+		foreach ($lastmeal as $meal) {
+			$meal->date = $this->mealmodel->dealdate($meal->start);
+			$meal->date = $meal->date[1];
+		}
 
 		// 取出热门用户，以聚餐数倒序排列
 		$hotshop = array();//$this->shopmodel->get_hotests(5);

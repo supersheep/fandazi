@@ -62,15 +62,23 @@
 		<div class="box">
 		<div class="head">即将开始</div>
 		<div class="body">
-			
+			<? foreach($lastmeal as $i=>$meal): ?>
+				<div class="lastmeal clear <?=$i==count($lastmeal)-1?"last":"" ?>">
+					<p class="title"><?=$meal->title;?></p>
+					<a class="start-date" href="/user/<?=$meal->id;?>"><?=$meal->date;?></a>
+				</div>
+			<? endforeach; ?>
 		</div>
 		</div>
 		
 		<div class="box">
 		<div class="head">热门聚餐</div>
 		<div class="body">
-			<? foreach($hotmeal as $meal): ?>
-				
+			<? foreach($hotmeal as $i=>$meal): ?>
+				<div class="hotmeal clear <?=$i==count($hotmeal)-1?"last":"" ?>">
+					<p class="title"><?=$meal->title;?></p>
+					<a class="start-date" href="/user/<?=$meal->id;?>"><?=$meal->date;?></a>
+				</div>
 			<? endforeach; ?>
 		</div>
 		</div>
