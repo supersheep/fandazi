@@ -58,32 +58,23 @@
 	</div>	
 
 	<div class="aside">
+
+		<? if(count($lastmeal)):?>
 		<div class="box"><a href="/meal/create" class="btn">发起聚餐</a></div>
 		<div class="box">
 		<div class="head">即将开始</div>
 		<div class="body">
 			<? foreach($lastmeal as $i=>$meal): ?>
-				<div class="lastmeal clear <?=$i==count($lastmeal)-1?"last":"" ?>">
-					<p class="title"><?=$meal->title;?></p>
-					<a class="start-date" href="/user/<?=$meal->id;?>"><?=$meal->date;?></a>
+				<div class="meal lastmeal clear <?=$i==count($lastmeal)-1?"last":"" ?>">
+					<a class="title" href="/meal/<?=$meal->id;?>"><?=$meal->title;?></a>
+					<p class="misc" href="/user/<?=$meal->id;?>"><span class="attend_count"><?=$meal->attend_count;?>人参加</span>|<span class="start-date"><?=$meal->date;?></span></p>
 				</div>
 			<? endforeach; ?>
 		</div>
 		</div>
-		
-		<div class="box">
-		<div class="head">热门聚餐</div>
-		<div class="body">
-			<? foreach($hotmeal as $i=>$meal): ?>
-				<div class="hotmeal clear <?=$i==count($hotmeal)-1?"last":"" ?>">
-					<p class="title"><?=$meal->title;?></p>
-					<a class="start-date" href="/user/<?=$meal->id;?>"><?=$meal->date;?></a>
-				</div>
-			<? endforeach; ?>
-		</div>
-		</div>
-		
+		<? endif;?>
 
+		<? if(count($hotuser)):?>
 		<div class="box">
 		<div class="head">热门饭搭子</div>
 		<div class="body">
@@ -99,11 +90,28 @@
 			<? endforeach;?>
 		</div>
 		</div>
+		<? endif;?>
 
+		<? if(count($hotmeal)):?>
+		<div class="box">
+		<div class="head">热门聚餐</div>
+		<div class="body">
+			<? foreach($hotmeal as $i=>$meal): ?>
+				<div class="meal hotmeal clear <?=$i==count($hotmeal)-1?"last":"" ?>">
+					<a class="title" href="/meal/<?=$meal->id;?>"><?=$meal->title;?></a>
+					<p class="misc" href="/user/<?=$meal->id;?>"><span class="attend_count"><?=$meal->attend_count;?>人参加</span>|<span class="start-date"><?=$meal->date;?></span></p>
+				</div>
+			<? endforeach; ?>
+		</div>
+		</div>
+		<? endif;?>
+
+		<? if(count($hotshop)):?>
 		<div class="box">
 		<div class="head">热门餐馆</div>
 		<div class="body"></div>
 		</div>
+		<? endif;?>
 	</div>
 
 </div>

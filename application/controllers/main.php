@@ -35,7 +35,7 @@ class Main extends FDZ_Controller{
 		$hotuser = $this->usermodel->get_hotests(5);
 
 		// 取出热门聚餐
-		$hotmeal = $this->mealmodel->get_last(array(),5,0,"start");
+		$hotmeal = $this->mealmodel->get_last(array(),5,0,"attend_count");
 		foreach ($hotmeal as $meal) {
 			$meal->date = $this->mealmodel->dealdate($meal->start);
 			$meal->date = $meal->date[1];

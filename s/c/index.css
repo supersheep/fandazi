@@ -139,25 +139,33 @@
 #bd .aside .box .user .name,
 #bd .aside .box .user .company,
 #bd .aside .box .user .duty{
-  margin-left:75px;
+  margin-left:60px;
   display: block;
 }
 
-#bd .aside .box .lastmeal{
+#bd .aside .box .meal{
   padding: 5px;
   border-bottom: 1px dashed #ccc;
 }
 
-#bd .aside .box .lastmeal .title{
+#bd .aside .box .meal .title{
   font-size: 16px;
   line-height: 18px;
+  display: block;
   margin-bottom: 10px;
 }
 
-#bd .aside .box .lastmeal .start-date{
-  display: block;
+#bd .aside .box .meal .misc{
   text-align: right;
   color: #aaa;
+}
+
+#bd .aside .box .meal .misc .start-date{
+  margin-left:5px;
+}
+
+#bd .aside .box .meal .misc .attend_count{
+  margin-right:5px;
 }
 
 #bd .aside .box .last{
