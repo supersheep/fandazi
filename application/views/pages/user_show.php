@@ -1,4 +1,4 @@
-<div id="bd">
+<div id="bd" class="clear">
 
 	<div class="main">
 		<div class="card box clear">
@@ -56,5 +56,18 @@
 		</div>
 	</div>
 	
+	<div class="aside">
+		
+		<div class="box followers">
+			<div class="head">饭醉同伙</div>
+			<div class="body">
+				<ul class="clear">
+					<?foreach($followers as $follower):?>
+					<li><a href="/user/<?=$follower->id;?>"><img src="<?=$follower->avatar_small;?>" alt="<?=$follower->name;?>"></a></li>
+					<?endforeach;?>
+				</ul>
+			</div>
+		</div>
+	</div>
 	
 </div>

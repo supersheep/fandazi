@@ -16,15 +16,23 @@ class User extends FDZ_Controller{
 			}
 
 			$this->load->model("followmodel");
-			$pair = $this->followmodel->get_one_by_pair($this->current_user->id,$user->id);
 
-			$followed = $this->logged && count($pair);
+			// 和该用户发生关系
+			if(!$this->current_user){
+				$followed = false;
+			}else{
+				$pair = $this->followmodel->get_one_by_pair($this->current_user->id,$user->id);
+				$followed = $this->logged && count($pair);
+			}
+
+			$followers = $this->followmodel->get_followers_of_user($user->id,0,10);
 
 			$this->data = array(
 				"css" => array("user_show"),
 				"recent_meals" => $recent_meals,
 				"jsmain" => "user_show",
 				"followed" => $followed,
+				"followers" => $followers,
 				"jsdata" => array(
 					"userid"=>$user->id
 				),
