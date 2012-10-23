@@ -1,7 +1,7 @@
 <html><head>
 <title>饭搭子</title>
 <meta charset="UTF-8">
-
+<meta property="wb:webmaster" content="e2051c3bef2598b6" />
 <script type="text/javascript" src="/s/j/sea.js"></script>
 <script type="text/javascript" src="/s/j/jquery.js"></script>
 
